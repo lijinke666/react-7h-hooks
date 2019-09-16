@@ -1,4 +1,4 @@
-import { usePrompt } from '../src/hooks'
+import { usePrompt } from '../src'
 
 describe('usePrompt', () => {
   it('should be defined', () => {
