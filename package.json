@@ -26,7 +26,9 @@
     "clean": "rimraf lib es",
     "release": "semantic-release",
     "prepublish": "yarn build",
-    "test": "jest"
+    "test": "jest",
+    "coverage": "yarn test --coverage",
+    "ci:coverage": "npm run coverage && codecov"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -83,6 +85,7 @@
     "@types/jest": "^24.0.18",
     "@types/react-router": "^5.0.3",
     "babel-jest": "^24.9.0",
+    "codecov": "^3.5.0",
     "commitlint": "^8.1.0",
     "husky": "^3.0.5",
     "jest": "^24.9.0",
