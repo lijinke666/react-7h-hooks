@@ -19,6 +19,11 @@ export interface PromptTipsProps {
   ok?: React.ReactNode | string
   cancel?: React.ReactNode | string
 }
+export interface PromptValueProps extends PromptTipsProps {
+  visible: boolean
+  onConfirm: () => void
+  onCancel: () => void
+}
 
 const PromptContext = React.createContext<PromptContextProps>({
   history: null,
