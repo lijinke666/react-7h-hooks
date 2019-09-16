@@ -22,10 +22,11 @@
     "lint:types": "tsc --noEmit",
     "build:cjs": "tsc",
     "build:es": "tsc -m esNext --outDir es",
-    "build": "yarn clean: yarn build:cjs && yarn build:es",
+    "build": "yarn clean && yarn build:cjs && yarn build:es",
     "clean": "rimraf lib es",
     "release": "semantic-release",
-    "prepublish": "yarn build"
+    "prepublish": "yarn build",
+    "test": "jest"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
@@ -71,11 +72,14 @@
     "react-dom": "^16.9.0"
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^8.1.0",
+    "commitlint": "^8.1.0",
+    "husky": "^3.0.5",
     "jest": "^24.9.0",
     "lint-staged": "^9.2.5",
     "prettier": "^1.18.2",
     "semantic-release": "^15.13.24",
-    "ts-lint": "^4.5.1",
+    "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-eslint-rules": "^5.4.0",
     "tslint-plugin-prettier": "^2.0.1",
