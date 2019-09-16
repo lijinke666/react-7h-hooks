@@ -23,11 +23,10 @@ jobs:
         env:
           CI: true
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-
-#       - name: Deploy github pages
-#         uses: JamesIves/github-pages-deploy-action@master
-#         env:
-#           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-#           BRANCH: gh-pages
-#           FOLDER: example/dist
-#           BUILD_SCRIPT: npm run build:demo
+      # - name: Deploy github pages
+      #   uses: JamesIves/github-pages-deploy-action@master
+      #   env:
+      #     ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+      #     BRANCH: gh-pages
+      #     FOLDER: storybook-static
+      #     BUILD_SCRIPT: npm run build:docs
