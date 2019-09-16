@@ -7,14 +7,14 @@ import {
 } from '../../context/prompt'
 import { Location } from 'history'
 
-const _defaultPromptTips = {
+const defaultPromptTips = {
   title: '确认离开?',
   description: '离开不保留任何数据',
   ok: '确认',
   cancel: '取消',
 }
 
-const usePrompt = (defaultPromptTips: PromptTipsProps = _defaultPromptTips) => {
+const usePrompt = () => {
   const { history } = useContext<PromptContextProps>(PromptContext)
   const [isPromptWhenWillLeave, setIsPromptWhenWillLeave] = useState<boolean>(
     false
@@ -54,7 +54,7 @@ const usePrompt = (defaultPromptTips: PromptTipsProps = _defaultPromptTips) => {
     setConfirmModalVisible(false)
   }, [])
 
-  const onConfirmCancelEdit = useCallback(() => {
+  const onConfirm = useCallback(() => {
     setIsPromptWhenWillLeave(false)
     setConfirmModalVisible(false)
     setTimeout(() => {
@@ -109,12 +109,18 @@ const usePrompt = (defaultPromptTips: PromptTipsProps = _defaultPromptTips) => {
     setConfirmTipsForConsumer,
   ])
 
+  const promptValue = useMemo(() => {
+    return {
+      ...promptTips,
+      visible: confirmModalVisible,
+      onConfirm,
+      onCancel: onCloseConfirmModal,
+    }
+  }, [promptTips, onConfirm, onCloseConfirmModal, confirmModalVisible])
+
   return {
-    ...promptTips,
-    onConfirmCancelEdit,
-    confirmModalVisible,
+    promptValue,
     onLocationWillChange,
-    onCloseConfirmModal,
     promptContextProviderValue,
   }
 }

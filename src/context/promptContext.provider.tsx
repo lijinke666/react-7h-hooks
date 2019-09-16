@@ -1,23 +1,29 @@
 import React from 'react'
-import PromptContext, { PromptContextProps } from './prompt'
+import { Prompt } from 'react-router'
+import PromptContext, { PromptContextProps, PromptValueProps } from './prompt'
 import usePrompt from '../hooks/usePrompt'
 
 interface Props {
-  children: React.ReactNode
+  children: (promptValue: PromptValueProps) => React.ReactNode
 }
 
 const createPromptContextProvider = (
   history: PromptContextProps['history']
 ) => (props: Props) => {
-  const value = usePrompt()
+  const {
+    promptValue,
+    onLocationWillChange,
+    promptContextProviderValue,
+  } = usePrompt()
   return (
     <PromptContext.Provider
       value={{
-        ...value,
+        ...promptContextProviderValue,
         history,
       }}
     >
-      {props.children}
+      <Prompt message={onLocationWillChange} />
+      {props.children(promptValue)}
     </PromptContext.Provider>
   )
 }
