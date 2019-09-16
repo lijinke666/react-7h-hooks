@@ -14,6 +14,11 @@
     "package.json",
     "README.md"
   ],
+  "keywords": [
+    "react",
+    "react-hooks",
+    "7h"
+  ],
   "types": "lib/index.d.ts",
   "typings": "lib/index.d.ts",
   "scripts": {
@@ -98,7 +103,6 @@
     "babel-loader": "^8.0.6",
     "codecov": "^3.5.0",
     "commitlint": "^8.1.0",
-    "docz": "^2.0.0-rc.40",
     "husky": "^3.0.5",
     "jest": "^24.9.0",
     "lint-staged": "^9.2.5",
