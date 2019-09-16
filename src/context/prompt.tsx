@@ -1,20 +1,22 @@
-import React from 'react'
+import React from 'react';
 
-export type ISetPromptWhenWillLeaveProps = boolean | {
-  cancelAction?: boolean
-  prompt?: boolean
+export type SetPromptWhenWillLeaveProps =
+  | boolean
+  | {
+      cancelAction?: boolean;
+      prompt?: boolean;
+    };
+
+export interface PromptContextProps {
+  isPromptWhenWillLeave: boolean;
+  isConfirmToLeaveFromCancelAction: boolean;
+  setPromptWhenWillLeave: (options?: SetPromptWhenWillLeaveProps) => void;
 }
 
-export interface IPromptContextProps {
-  isPromptWhenWillLeave: boolean
-  isConfirmToLeaveFromCancelAction: boolean
-  setPromptWhenWillLeave: (options?: ISetPromptWhenWillLeaveProps) => void
-}
-
-const PromptContext = React.createContext<IPromptContextProps>({
+const PromptContext = React.createContext<PromptContextProps>({
   isPromptWhenWillLeave: true,
   isConfirmToLeaveFromCancelAction: false,
-  setPromptWhenWillLeave:()=>{}
-})
+  setPromptWhenWillLeave: () => {},
+});
 
-export default PromptContext
+export default PromptContext;
