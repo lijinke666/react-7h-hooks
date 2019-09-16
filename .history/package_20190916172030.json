@@ -1,0 +1,85 @@
+{
+  "name": "react-7h-hooks",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lijinke666/react-7h-hooks.git",
+  "bugs": {
+    "url": "https://github.com/lijinke666/react-7h-hooks/issues"
+  },
+  "author": "Jinke.Li <1359518268@qq.com>",
+  "license": "MIT",
+  "files": [
+    "lib/",
+    "es/",
+    "package.json",
+    "README.md"
+  ],
+  "types": "lib/index.d.ts",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "lint": "tslint 'src/**/*.{ts,tsx}' -t verbose",
+    "lint:fix": "yarn lint --fix",
+    "lint:types": "tsc --noEmit",
+    "build:cjs": "tsc",
+    "build:es": "tsc -m esNext --outDir es",
+    "build": "yarn clean: yarn build:cjs && yarn build:es",
+    "clean": "rimraf lib es",
+    "release": "semantic-release",
+    "prepublish": "yarn build"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "tslint --fix -t verbose",
+      "git add"
+    ]
+  },
+  "release": {
+    "branches": [
+      "master",
+      {
+        "name": "next",
+        "prerelease": "rc"
+      }
+    ],
+    "verifyConditions": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ],
+    "prepare": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      "@semantic-release/git"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn test"
+    }
+  },
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
+  "dependencies": {
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0"
+  },
+  "devDependencies": {
+    "jest": "^24.9.0",
+    "lint-staged": "^9.2.5",
+    "prettier": "^1.18.2",
+    "semantic-release": "^15.13.24",
+    "ts-lint": "^4.5.1",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-eslint-rules": "^5.4.0",
+    "tslint-plugin-prettier": "^2.0.1",
+    "tslint-react": "^4.0.0",
+    "typescript": "^3.6.3"
+  }
+}

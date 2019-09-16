@@ -1,0 +1,38 @@
+{
+  "name": "react-7h-hooks",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lijinke666/react-7h-hooks.git",
+  "author": "Jinke.Li <1359518268@qq.com>",
+  "license": "MIT",
+  "types": "lib/index.d.ts",
+  "typings": "lib/index.d.ts",
+  "scripts": {
+    "lint": "tslint 'src/**/*.{ts,tsx}' -t verbose",
+    "lint:fix": "yarn lint --fix",
+    "lint:types": "tsc --noEmit",
+    "build:cjs": "tsc",
+    "build:es": "tsc -m esNext --outDir es",
+    "build": "yarn build:cjs && yarn build:es",
+    "clean": "rimraf lib storybook-static es",
+    "release": "semantic-release"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "tslint --fix -t verbose",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn test"
+    }
+  },
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  }
+}

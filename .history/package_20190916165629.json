@@ -1,0 +1,25 @@
+{
+  "name": "react-7h-hooks",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lijinke666/react-7h-hooks.git",
+  "author": "Jinke.Li <1359518268@qq.com>",
+  "license": "MIT",
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "components/**/*.less": [
+      "stylelint --syntax less --fix",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  }
+}
