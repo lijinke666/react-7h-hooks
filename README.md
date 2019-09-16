@@ -20,6 +20,9 @@ react-7h-hooks
   <a href="https://codecov.io/gh/lijinke666/react-7h-hooks">
     <img src="https://codecov.io/gh/lijinke666/react-7h-hooks/branch/master/graph/badge.svg" />
   </a>
+  <a href="https://app.netlify.com/sites/react-7h-hooks/deploys">
+    <img src="https://api.netlify.com/api/v1/badges/216fcb8a-7c65-47f1-a1eb-040dbaeb4548/deploy-status" />
+  </a>
 </p>
 
  **开发中,请勿用于生产环境**
@@ -57,7 +60,7 @@ function App() {
 
 ## :metal: 文档
 
-[TODO](https://cuke-ui.github.io/cuke-ui/)
+[https://react-7h-hooks.netlify.com/](https://react-7h-hooks.netlify.com/)
 
 ## :page_facing_up: License
 
