@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from 'react'
-import { createPromptContextProvider, usePrompt } from '../src'
+import { createPromptContextProvider, usePrompt } from '../../src'
 import { Modal, Button } from 'antd'
 import { Router } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
@@ -77,4 +77,5 @@ export const Example = () => {
 
 export default {
   title: 'usePrompt',
+  parameters: { notes: require('./index.md') },
 }
