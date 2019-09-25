@@ -9,6 +9,7 @@
   "homepage": "https://react-7h-hooks.netlify.com/",
   "author": "Jinke.Li <1359518268@qq.com>",
   "license": "MIT",
+  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
   "files": [
     "lib/",
     "es/",
