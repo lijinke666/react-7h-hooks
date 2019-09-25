@@ -9,7 +9,9 @@
   "homepage": "https://react-7h-hooks.netlify.com/",
   "author": "Jinke.Li <1359518268@qq.com>",
   "license": "MIT",
-  "publishConfig": { "registry": "https://npm.pkg.github.com/" },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "files": [
     "lib/",
     "es/",
@@ -101,6 +103,7 @@
     "@types/history": "^4.7.3",
     "@types/jest": "^24.0.18",
     "@types/react-router": "^5.0.3",
+    "@types/react-router-dom": "^4.3.5",
     "@types/storybook__react": "^4.0.2",
     "antd": "^3.23.2",
     "awesome-typescript-loader": "^5.2.1",
