@@ -7,15 +7,16 @@ import {
 } from '../../context/prompt'
 import { Location } from 'history'
 
-const defaultPromptTips = {
+const defaultPromptTips: PromptTipsProps = {
   title: '确认离开?',
   description: '离开不保留任何数据',
-  ok: '确认',
-  cancel: '取消',
-}
+  okText: '确认',
+  cancelText: '取消',
+} as const
 
 const usePrompt = () => {
-  const { history } = useContext<PromptContextProps>(PromptContext)
+  const promptContext = useContext<PromptContextProps>(PromptContext)
+  const { history } = promptContext
   const [isPromptWhenWillLeave, setIsPromptWhenWillLeave] = useState<boolean>(
     false
   )
@@ -70,7 +71,7 @@ const usePrompt = () => {
 
   const setPromptWhenWillLeaveForConsumer = useCallback(
     ({ prompt = true, cancelAction }: SetPromptWhenWillLeaveProps = {}) => {
-      const { pathname, search } = history!.location
+      const { pathname = '', search = '' } = (history && history.location) || {}
       setIsPromptWhenWillLeave(prompt)
       setNextJumpLocation({
         pathname,
@@ -122,6 +123,7 @@ const usePrompt = () => {
     promptValue,
     onLocationWillChange,
     promptContextProviderValue,
+    ...promptContext,
   }
 }
 
