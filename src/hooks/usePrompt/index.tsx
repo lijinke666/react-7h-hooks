@@ -7,14 +7,14 @@ import {
 } from '../../context/prompt'
 import { Location } from 'history'
 
-const defaultPromptTips: PromptTipsProps = {
+const _defaultPromptTips: PromptTipsProps = {
   title: '确认离开?',
   description: '离开不保留任何数据',
   okText: '确认',
   cancelText: '取消',
 } as const
 
-const usePrompt = () => {
+const usePrompt = (defaultPromptTips: PromptTipsProps = _defaultPromptTips) => {
   const promptContext = useContext<PromptContextProps>(PromptContext)
   const { history } = promptContext
   const [isPromptWhenWillLeave, setIsPromptWhenWillLeave] = useState<boolean>(

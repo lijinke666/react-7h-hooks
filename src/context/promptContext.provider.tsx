@@ -1,6 +1,10 @@
 import React from 'react'
 import { Prompt } from 'react-router'
-import PromptContext, { PromptContextProps, PromptValueProps } from './prompt'
+import PromptContext, {
+  PromptContextProps,
+  PromptValueProps,
+  PromptTipsProps,
+} from './prompt'
 import usePrompt from '../hooks/usePrompt'
 
 interface Props {
@@ -8,13 +12,14 @@ interface Props {
 }
 
 const createPromptContextProvider = (
-  history: PromptContextProps['history']
+  history: PromptContextProps['history'],
+  promptTips?: PromptTipsProps
 ) => (props: Props) => {
   const {
     onLocationWillChange,
     promptContextProviderValue,
     promptValue,
-  } = usePrompt()
+  } = usePrompt(promptTips)
   return (
     <PromptContext.Provider
       value={{
