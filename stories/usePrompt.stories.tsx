@@ -17,7 +17,6 @@ const Component = withRouter(() => {
   const [edit, setEdit] = useState<boolean>(false)
 
   useEffect(() => {
-    console.log('确定离开:', isConfirmToLeaveFromCancelAction)
     if (isConfirmToLeaveFromCancelAction) {
       setEdit(false)
     }
