@@ -40,18 +40,25 @@ yarn add creact-7h-hooks
 ## :book: 如何使用
 
 ```jsx
-import React from "react"
-import { createPromptContextProvider, usePrompt } from "react-7h-hooks"
-import { Modal } from "antd"
+import React, { useCallback } from 'react'
+import { useDownload } from 'react-7h-hooks'
+import { Button } from 'antd'
 
-function App() {
-  const PromptContextProvider = createPromptContextProvider(history)
-  const {promptValue} = usePrompt()
+export const Example = () => {
+  const createDownloadInstance = useDownload()
+
+  const onClick = useCallback(() => {
+    const instance = createDownloadInstance({
+      name: 'favicon',
+      data: require('./favicon.ico'),
+    })
+    instance.download()
+  }, [])
 
   return (
-    <PromptContextProvider>
-      <Modal {...promptValue}/>
-    </PromptContextProvider>
+    <Button icon="download" type="primary" onClick={onClick}>
+      下载图标
+    </Button>
   )
 }
 ```
