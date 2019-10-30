@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/lijinke666/react-7h-hooks/compare/v0.1.1...v0.1.2) (2019-10-30)
+
+
+### Features
+
+* **use-trim-input:** 增加测试 ([941c81b](https://github.com/lijinke666/react-7h-hooks/commit/941c81b))
+* **use-trim-input:** 完善 useTrimInput ([7935d06](https://github.com/lijinke666/react-7h-hooks/commit/7935d06))
+* **use-trim-input:** 新增 useTrimInput ([10df425](https://github.com/lijinke666/react-7h-hooks/commit/10df425))
+
 ### [0.1.1](https://github.com/lijinke666/react-7h-hooks/compare/v0.1.0...v0.1.1) (2019-09-30)
 
 ## [0.1.0](https://github.com/lijinke666/react-7h-hooks/compare/v0.0.3...v0.1.0) (2019-09-30)
