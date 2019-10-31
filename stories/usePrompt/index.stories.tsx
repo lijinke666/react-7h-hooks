@@ -49,9 +49,15 @@ const Component = withRouter(() => {
         {edit && <Button onClick={onCancelEdit}>取消</Button>}
       </p>
 
-      <Button type="primary" onClick={() => setEdit(value => !value)}>
-        切换编辑状态
-      </Button>
+      <p>
+        <Button type="primary" onClick={() => setEdit(value => !value)}>
+          切换编辑状态
+        </Button>
+      </p>
+
+      <p>
+        <Button onClick={() => history.push('/test')}>离开当前页面</Button>
+      </p>
     </>
   )
 })
