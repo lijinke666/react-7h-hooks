@@ -42,6 +42,23 @@ describe('usePrompt', () => {
     expect(wrapper.find(Children)).toHaveLength(1)
   })
 
+  it('should merge default prompt tips', () => {
+    let _promptValue
+    const Provider = createPromptContextProvider(null, {
+      okText: 'test',
+    })
+    const Children = () => <div>1</div>
+    shallow(
+      <Provider>
+        {promptValue => {
+          _promptValue = promptValue
+          return <Children />
+        }}
+      </Provider>
+    )
+    expect(_promptValue.okText).toEqual('test')
+  })
+
   it('should show prompt when will leave page', () => {
     const {
       setPromptWhenWillLeave,

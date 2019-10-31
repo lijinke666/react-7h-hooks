@@ -16,7 +16,10 @@ import history from 'path/to/xx.ts'  // 当前 app 所使用的 history
 import { createPromptContextProvider } from 'react-7h-hooks'
 
 export const App = () => {
-  const PromptContextProvider = createPromptContextProvider(history)
+  const PromptContextProvider = createPromptContextProvider(history, {
+    // 自定义提示文字配置
+    ...
+  })
 
   return (
     <Router history={history}>
@@ -80,6 +83,7 @@ const Page = () => {
       <Button type="primary" onClick={() => setEdit(true)}>
         切换编辑状态
       </Button>
+      <Button onClick={() => history.push('/test')}>离开当前页面</Button>
     </>
   )
 }

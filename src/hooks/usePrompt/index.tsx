@@ -113,11 +113,18 @@ const usePrompt = (defaultPromptTips: PromptTipsProps = _defaultPromptTips) => {
   const promptValue = useMemo(() => {
     return {
       ...promptTips,
+      ...defaultPromptTips,
       visible: confirmModalVisible,
       onConfirm,
       onCancel: onCloseConfirmModal,
     }
-  }, [promptTips, onConfirm, onCloseConfirmModal, confirmModalVisible])
+  }, [
+    promptTips,
+    defaultPromptTips,
+    onConfirm,
+    onCloseConfirmModal,
+    confirmModalVisible,
+  ])
 
   return {
     promptValue,
