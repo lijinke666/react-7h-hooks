@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/lijinke666/react-7h-hooks/compare/v0.2.0...v0.2.1) (2019-10-31)
+
+
+### Bug Fixes
+
+* **use-prompt:** 修复promptTips 默认参数无效的问题 ([1e9e7de](https://github.com/lijinke666/react-7h-hooks/commit/1e9e7de5162b05533d3cbe85d7cd764004793623))
+
 ## [0.2.0](https://github.com/lijinke666/react-7h-hooks/compare/v0.1.2...v0.2.0) (2019-10-30)
 
 ### [0.1.2](https://github.com/lijinke666/react-7h-hooks/compare/v0.1.1...v0.1.2) (2019-10-30)
