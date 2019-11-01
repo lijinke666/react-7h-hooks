@@ -46,7 +46,7 @@ const Page = () => {
     isConfirmToLeaveFromCancelAction,
   } = usePrompt()
 
-  // 自定义提示文本 本质就是修改 context 里面的promptValue
+  // [可选] 自定义提示文本 本质就是修改 context 里面的promptValue
   useEffect(() => {
     setConfirmTips({
       title: '自定义提示标题',
@@ -56,21 +56,22 @@ const Page = () => {
     })
   }, [])
 
-  // (路由级别的改变) 根据是否是编辑 设置离开页面的时候是否需要提示
+  // [必须] (路由级别的改变) 表名什么时候离开页面需要提示
   useEffect(() => {
     setPromptWhenWillLeave({
       prompt: edit,
     })
   }, [edit])
 
-  // (页面界面的改变) 当点击页面上的取消按钮时 并没有路由改变 但是如果也需要提示
+  // [可选] (页面界面的改变) 当点击页面上的取消按钮时,但是并没有路由改变,如果也需要提示
   const onCancelEdit = useCallback(() => {
     setPromptWhenWillLeave({
       cancelAction: true,
     })
   }, [])
 
-  // 如果是有 取消按钮触发的 提示框 根据是否点击了确定 做出相应的逻辑处理
+  // [可选] (页面界面的改变) 如果是由 取消按钮触发的 提示
+  // 根据是否点击了提示框中确定的确定按钮 做出相应的逻辑处理
   useEffect(() => {
     if (isConfirmToLeaveFromCancelAction) {
       setEdit(false)

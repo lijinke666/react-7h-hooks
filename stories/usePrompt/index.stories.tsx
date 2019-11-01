@@ -56,7 +56,9 @@ const Component = withRouter(() => {
       </p>
 
       <p>
-        <Button onClick={() => history.push('/test')}>离开当前页面</Button>
+        <Button disabled={!edit} onClick={() => history.push('/test')}>
+          离开当前页面
+        </Button>
       </p>
     </>
   )
