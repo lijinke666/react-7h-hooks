@@ -32,7 +32,7 @@ module.exports = {
   rules: {
     "prettier/prettier": "error",
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/exhaustive-deps": 0,
     camelcase: 0,
     'react/jsx-one-expression-per-line': 0,
     'react/prop-types': 0,
@@ -66,7 +66,6 @@ module.exports = {
     'react/static-property-placement': 0,
     'global-require': 0,
     'import/extensions': 0,
-    'import/no-extraneous-dependencies': 0,
     'import/prefer-default-export': 0,
   },
 };

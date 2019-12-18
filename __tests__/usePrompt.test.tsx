@@ -1,8 +1,8 @@
 import React from 'react'
-import { usePrompt, createPromptContextProvider, PromptContext } from '../src'
 import { renderHook, act } from '@testing-library/react-hooks'
 import { shallow } from 'enzyme'
 import { Prompt } from 'react-router-dom'
+import { usePrompt, createPromptContextProvider } from '../src'
 
 describe('usePrompt', () => {
   let prompt
@@ -13,7 +13,7 @@ describe('usePrompt', () => {
         description: 'description',
         okText: 'ok',
         cancelText: 'cancel',
-      })
+      }),
     )
   })
   it('should be defined', () => {
@@ -44,7 +44,7 @@ describe('usePrompt', () => {
 
   it('should merge default prompt tips', () => {
     let _promptValue
-    const Provider = createPromptContextProvider(null, {
+    const Provider = createPromptContextProvider({
       okText: 'test',
     })
     const Children = () => <div>1</div>
@@ -54,7 +54,7 @@ describe('usePrompt', () => {
           _promptValue = promptValue
           return <Children />
         }}
-      </Provider>
+      </Provider>,
     )
     expect(_promptValue.okText).toEqual('test')
   })

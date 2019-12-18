@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useCallback } from 'react'
 import { Button, message } from 'antd'
 import { useNextTick } from '../../src'
@@ -8,7 +9,7 @@ export default {
 }
 
 export const Example = () => {
-  useNextTick(() => {
+  const reTrigger = useNextTick(() => {
     message.info('自动触发')
   })
   const nextTick = useNextTick()
@@ -21,6 +22,7 @@ export const Example = () => {
   return (
     <>
       <Button onClick={onClick}>手动触发</Button>
+      <Button onClick={() => reTrigger()}>再次自动触发</Button>
     </>
   )
 }
