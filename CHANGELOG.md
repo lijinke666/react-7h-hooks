@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.3.0](https://github.com/lijinke666/react-7h-hooks/compare/v0.2.1...v0.3.0) (2019-12-18)
+
+
+### Features
+
+* add useNextTick hooks ([e7ad079](https://github.com/lijinke666/react-7h-hooks/commit/e7ad07971ff765a0cfe122a0b3c90cdcec08f9fc))
+
 ### [0.2.1](https://github.com/lijinke666/react-7h-hooks/compare/v0.2.0...v0.2.1) (2019-10-31)
 
 
