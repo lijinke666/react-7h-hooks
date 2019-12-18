@@ -25,7 +25,7 @@ react-7h-hooks
   </a>
 </p>
 
- ## :zap: 安装
+ ## :package: 安装
 
 > 使用 npm
 
@@ -39,7 +39,7 @@ npm i react-7h-hooks --save
 yarn add react-7h-hooks
 ```
 
-## :book: 如何使用
+## :memo: 如何使用
 
 ```tsx
 import React from 'react'
@@ -63,9 +63,14 @@ export const Example = () => {
 }
 ```
 
-## :metal: 文档
+## :book: 文档
 
 [https://react-7h-hooks.netlify.com/](https://react-7h-hooks.netlify.com/)
+
+## :star: 推荐
+
+- [swr](https://github.com/zeit/swr) 网络请求
+- [react-use](https://github.com/streamich/react-use) 常用的一些基础 hooks
 
 ## :page_facing_up: License
 
