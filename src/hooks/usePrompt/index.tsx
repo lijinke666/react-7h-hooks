@@ -1,11 +1,11 @@
 import { useState, useMemo, useContext, useCallback } from 'react'
+import { Location } from 'history'
 import { PromptContext } from '../../context'
 import {
   PromptTipsProps,
   PromptContextProps,
   SetPromptWhenWillLeaveProps,
 } from '../../context/prompt'
-import { Location } from 'history'
 
 const _defaultPromptTips: PromptTipsProps = {
   title: '确认离开?',
@@ -18,7 +18,7 @@ const usePrompt = (defaultPromptTips: PromptTipsProps = _defaultPromptTips) => {
   const promptContext = useContext<PromptContextProps>(PromptContext)
   const { history } = promptContext
   const [isPromptWhenWillLeave, setIsPromptWhenWillLeave] = useState<boolean>(
-    false
+    false,
   )
   const [nextJumpLocation, setNextJumpLocation] = useState<
     Pick<Location, 'pathname' | 'search'>
@@ -33,7 +33,7 @@ const usePrompt = (defaultPromptTips: PromptTipsProps = _defaultPromptTips) => {
   ] = useState<boolean>(false)
   const [isFromCancelAction, setIsFromCancelAction] = useState<boolean>(false)
   const [promptTips, setPromptTips] = useState<PromptTipsProps>(
-    defaultPromptTips
+    defaultPromptTips,
   )
 
   const onLocationWillChange = useCallback(
@@ -48,7 +48,7 @@ const usePrompt = (defaultPromptTips: PromptTipsProps = _defaultPromptTips) => {
       }
       return true
     },
-    [isPromptWhenWillLeave]
+    [isPromptWhenWillLeave],
   )
 
   const onCloseConfirmModal = useCallback(() => {
@@ -59,7 +59,7 @@ const usePrompt = (defaultPromptTips: PromptTipsProps = _defaultPromptTips) => {
     setIsPromptWhenWillLeave(false)
     setConfirmModalVisible(false)
     setTimeout(() => {
-      history && history.push(nextJumpLocation)
+      history?.push(nextJumpLocation)
     }, 0)
     if (isFromCancelAction) {
       setIsConfirmToLeaveFromCancelAction(true)
@@ -67,7 +67,7 @@ const usePrompt = (defaultPromptTips: PromptTipsProps = _defaultPromptTips) => {
         setIsConfirmToLeaveFromCancelAction(false)
       }, 0)
     }
-  }, [nextJumpLocation, isFromCancelAction])
+  }, [isFromCancelAction, history, nextJumpLocation])
 
   const setPromptWhenWillLeaveForConsumer = useCallback(
     ({ prompt = true, cancelAction }: SetPromptWhenWillLeaveProps = {}) => {
@@ -83,7 +83,7 @@ const usePrompt = (defaultPromptTips: PromptTipsProps = _defaultPromptTips) => {
         setConfirmModalVisible(true)
       }
     },
-    []
+    [history],
   )
 
   const setConfirmTipsForConsumer = useCallback(
@@ -93,7 +93,7 @@ const usePrompt = (defaultPromptTips: PromptTipsProps = _defaultPromptTips) => {
         ...customConfirmTips,
       })
     },
-    [defaultPromptTips]
+    [defaultPromptTips],
   )
 
   const promptContextProviderValue = useMemo(() => {

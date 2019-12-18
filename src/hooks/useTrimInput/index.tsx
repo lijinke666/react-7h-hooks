@@ -3,7 +3,7 @@ import { trim } from '../../utils/string'
 
 type UseTrimInputReturnValue = [
   string,
-  (event: React.ChangeEvent<HTMLInputElement>) => void
+  (event: React.ChangeEvent<HTMLInputElement>) => void,
 ]
 
 const useTrimInput = (fullTrim: boolean = false): UseTrimInputReturnValue => {
@@ -12,7 +12,7 @@ const useTrimInput = (fullTrim: boolean = false): UseTrimInputReturnValue => {
     (e: React.ChangeEvent<HTMLInputElement>) => {
       setValue(e.target.value)
     },
-    [value, setValue]
+    [setValue],
   )
 
   const trimValue: string = useMemo(() => {

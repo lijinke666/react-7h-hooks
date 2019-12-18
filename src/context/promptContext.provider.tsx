@@ -13,7 +13,7 @@ interface Props {
 
 const createPromptContextProvider = (
   history: PromptContextProps['history'],
-  promptTips?: PromptTipsProps
+  promptTips?: PromptTipsProps,
 ) => (props: Props) => {
   const {
     onLocationWillChange,

@@ -24,7 +24,7 @@ const useDownload = () => {
         download: () => link.click(),
       }
     },
-    []
+    [createBlobUrl],
   )
 
   return createDownloadInstance

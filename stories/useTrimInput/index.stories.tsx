@@ -1,6 +1,6 @@
 import React from 'react'
-import { useTrimInput } from '../../src'
 import { Form, Input } from 'antd'
+import { useTrimInput } from '../../src'
 
 export default {
   title: 'useTrimInput',

@@ -10,7 +10,7 @@
 
 ```jsx
 import React, { useCallback } from 'react'
-import { useDownload } from '../../src'
+import { useDownload } from 'react-7h-hooks'
 import { Button } from 'antd'
 
 export const Example = () => {
