@@ -1,5 +1,4 @@
 import React from 'react'
-import { History } from 'history'
 
 export interface SetPromptWhenWillLeaveProps {
   cancelAction?: boolean
@@ -7,7 +6,6 @@ export interface SetPromptWhenWillLeaveProps {
 }
 
 export interface PromptContextProps {
-  history: History | null
   isPromptWhenWillLeave: boolean
   isConfirmToLeaveFromCancelAction: boolean
   setPromptWhenWillLeave: (options?: SetPromptWhenWillLeaveProps) => void
@@ -27,7 +25,6 @@ export interface PromptValueProps extends PromptTipsProps {
 }
 
 const PromptContext = React.createContext<PromptContextProps>({
-  history: null,
   isPromptWhenWillLeave: true,
   isConfirmToLeaveFromCancelAction: false,
   setPromptWhenWillLeave: () => {},

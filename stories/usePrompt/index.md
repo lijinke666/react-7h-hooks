@@ -12,17 +12,15 @@
 > 第一步: 在你的 入口 引入 context Provider
 
 ```jsx
-import history from 'path/to/xx.ts'  // 当前 app 所使用的 history
 import { createPromptContextProvider } from 'react-7h-hooks'
 
 export const App = () => {
-  const PromptContextProvider = createPromptContextProvider(history, {
+  const PromptContextProvider = createPromptContextProvider({
     // 自定义提示文字配置
-    ...
   })
 
   return (
-    <Router history={history}>
+    <Router>
       <PromptContextProvider>
         //  这里的 promptValue 就是 全局 context 里面的 弹框提示
         {promptValue => (

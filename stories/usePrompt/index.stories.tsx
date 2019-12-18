@@ -1,9 +1,10 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect, useState, useCallback } from 'react'
-import { createPromptContextProvider, usePrompt } from '../../src'
 import { Modal, Button } from 'antd'
 import { Router } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 import { withRouter } from 'react-router'
+import { createPromptContextProvider, usePrompt } from '../../src'
 
 const history = createBrowserHistory()
 
@@ -26,13 +27,13 @@ const Component = withRouter(() => {
     setPromptWhenWillLeave({
       prompt: edit,
     })
-  }, [edit])
+  }, [edit, setPromptWhenWillLeave])
 
   const onCancelEdit = useCallback(() => {
     setPromptWhenWillLeave({
       cancelAction: true,
     })
-  }, [])
+  }, [setPromptWhenWillLeave])
 
   useEffect(() => {
     setConfirmTips({
@@ -41,7 +42,7 @@ const Component = withRouter(() => {
       okText: '确定离开',
       cancelText: '取消',
     })
-  }, [])
+  }, [setConfirmTips])
   return (
     <>
       <p>
@@ -65,7 +66,7 @@ const Component = withRouter(() => {
 })
 
 export const Example = () => {
-  const PromptContextProvider = createPromptContextProvider(history)
+  const PromptContextProvider = createPromptContextProvider()
 
   return (
     <Router history={history}>

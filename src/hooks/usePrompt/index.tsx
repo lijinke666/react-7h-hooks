@@ -1,10 +1,10 @@
-import { useState, useMemo, useContext, useCallback } from 'react'
+import { useState, useMemo, useCallback, useContext } from 'react'
 import { Location } from 'history'
-import { PromptContext } from '../../context'
-import {
+import { useHistory } from 'react-router-dom'
+import PromptContext, {
   PromptTipsProps,
-  PromptContextProps,
   SetPromptWhenWillLeaveProps,
+  PromptContextProps,
 } from '../../context/prompt'
 
 const _defaultPromptTips: PromptTipsProps = {
@@ -16,7 +16,7 @@ const _defaultPromptTips: PromptTipsProps = {
 
 const usePrompt = (defaultPromptTips: PromptTipsProps = _defaultPromptTips) => {
   const promptContext = useContext<PromptContextProps>(PromptContext)
-  const { history } = promptContext
+  const history = useHistory()
   const [isPromptWhenWillLeave, setIsPromptWhenWillLeave] = useState<boolean>(
     false,
   )

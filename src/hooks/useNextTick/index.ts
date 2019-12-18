@@ -1,14 +1,15 @@
 import { useCallback, useEffect } from 'react'
 
-type UseNextTickParams = () => void
+type UseNextTickParams = (handler?: () => void) => void
 
 const useNextTick = (fn?: UseNextTickParams) => {
   let timer
 
   const nextTick = useCallback(
-    (handler: UseNextTickParams) => {
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      timer = setTimeout(handler, 0)
+    (handler?: UseNextTickParams) => {
+      if (handler) {
+        timer = setTimeout(handler, 0)
+      }
     },
     [timer],
   )
@@ -23,7 +24,7 @@ const useNextTick = (fn?: UseNextTickParams) => {
     return () => {}
   }, [nextTick, timer, fn])
 
-  return nextTick
+  return fn ?? nextTick
 }
 
 export default useNextTick
