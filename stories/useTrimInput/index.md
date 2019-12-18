@@ -10,7 +10,7 @@
 
 ```jsx
 import React from 'react'
-import { useTrimInput } from '../../src'
+import { useTrimInput } from 'react-7h-hooks'
 import { Form, Input } from 'antd'
 
 export const Example = () => {

@@ -28,37 +28,37 @@ react-7h-hooks
  ## :zap: 安装
 
 > 使用 npm
-```
+
+```bash
 npm i react-7h-hooks --save
 ```
 
 > 使用 yarn
-```
-yarn add creact-7h-hooks
+
+```bash
+yarn add react-7h-hooks
 ```
 
 ## :book: 如何使用
 
-```jsx
-import React, { useCallback } from 'react'
-import { useDownload } from 'react-7h-hooks'
-import { Button } from 'antd'
+```tsx
+import React from 'react'
+import { useTrimInput } from 'react-7h-hooks'
 
 export const Example = () => {
-  const createDownloadInstance = useDownload()
-
-  const onClick = useCallback(() => {
-    const instance = createDownloadInstance({
-      name: 'favicon',
-      data: require('./favicon.ico'),
-    })
-    instance.download()
-  }, [])
-
+  const [trimValue, setTrimValue] = useTrimInput()
+  const [fullTrimValue, setFullTrimValue] = useTrimInput(true)
   return (
-    <Button icon="download" type="primary" onClick={onClick}>
-      下载图标
-    </Button>
+    <>
+      <input
+        value={trimValue}
+        onChange={setTrimValue}
+      />
+      <input
+        value={fullTrimValue}
+        onChange={setFullTrimValue}
+      />
+    </>
   )
 }
 ```
