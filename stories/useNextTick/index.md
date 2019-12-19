@@ -1,10 +1,11 @@
 # useNextTick
 
-想在下一个 `event loop` 做一些事情的时候
+对 `useEffect` 和 `setTimeout` 的封装
 
 ## 使用场景
 
-- 需要在页面加载后, 或延迟执行, 可以用于获取 dom 等场景
+- 想在下一个 `event loop` 做一些事情的时候
+- 需要在页面加载后, 或延迟执行, 获取 dom 节点时
 
 ## 如何使用
 
