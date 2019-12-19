@@ -1,11 +1,11 @@
 # usePrompt
 
-对 `react-router-dom` 的 `Prompt` 组件 和 `React.createContext` 的一系列封装
+对 `react-router-dom` 的 `Prompt` 组件, `浏览器 history` 和 `React.createContext` 的一系列封装
 
 ## 使用场景
 
-- 当即将离开当前页面, 需要给与用户二次确认提示
-- 当编辑表单时, 如果点了浏览器的返回按钮 或者页面的返回按钮 需要给与用户二次确认提示
+- 即将离开当前页面, 需要给与用户二次确认提示
+- 当编辑表单时, 如果点了浏览器的返回按钮, 或者页面的返回按钮 需要给与用户二次确认提示
 
 ## 如何使用
 
@@ -54,7 +54,7 @@ const Page = () => {
     })
   }, [])
 
-  // [必须] (路由级别的改变) 表名什么时候离开页面需要提示
+  // [必须] (路由级别的改变) 表明什么时候离开页面需要提示
   useEffect(() => {
     setPromptWhenWillLeave({
       prompt: edit,
