@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/lijinke666/react-7h-hooks/compare/v0.3.1...v0.4.0) (2019-12-22)
+
+
+### Features
+
+* **use-list:** 新增 onClear 方法 ([8bbee55](https://github.com/lijinke666/react-7h-hooks/commit/8bbee5511230f35a95a6352c7ea4b14d067aeafb))
+* **use-list:** 新增 useList hook ([f279b51](https://github.com/lijinke666/react-7h-hooks/commit/f279b5138cf5f9c5f0be3651e02fcd10b9bbd2a3))
+
+
+### Bug Fixes
+
+* **use-list:** 修复 useList onRemove 的类型定义 ([f6ec854](https://github.com/lijinke666/react-7h-hooks/commit/f6ec854693150cfc1ca20b1dd4a309acc3e9b587))
+* **use-next-tick:** 使用 Promise 替代 setTimeout ([cea1f03](https://github.com/lijinke666/react-7h-hooks/commit/cea1f03afd31f1f6772d663b317303168d6d9bcb))
+
 ### [0.3.1](https://github.com/lijinke666/react-7h-hooks/compare/v0.3.0...v0.3.1) (2019-12-18)
 
 ## [0.3.0](https://github.com/lijinke666/react-7h-hooks/compare/v0.2.1...v0.3.0) (2019-12-18)
