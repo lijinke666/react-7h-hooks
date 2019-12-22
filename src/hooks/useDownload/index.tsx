@@ -1,10 +1,14 @@
 import { useCallback } from 'react'
 
-interface UseDownloadOptions {
+export interface UseDownloadParams {
   name: string
   data: string | Blob
   type?: string
 }
+
+export type UseDownloadReturn = (
+  params: UseDownloadParams,
+) => { download: () => void }
 
 const useDownload = () => {
   const createBlobUrl = useCallback((data: Blob, type?: string) => {
@@ -16,7 +20,7 @@ const useDownload = () => {
   }, [])
 
   const createDownloadInstance = useCallback(
-    ({ data, name, type }: UseDownloadOptions): { download: () => void } => {
+    ({ data, name, type }: UseDownloadParams): { download: () => void } => {
       const link = document.createElement('a')
       link.download = name
       link.href = typeof data !== 'string' ? createBlobUrl(data, type) : data
