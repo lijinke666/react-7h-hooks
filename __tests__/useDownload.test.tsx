@@ -1,5 +1,5 @@
-import { useDownload } from '../src'
 import { renderHook } from '@testing-library/react-hooks'
+import { useDownload } from '../src'
 
 describe('useDownload', () => {
   let download

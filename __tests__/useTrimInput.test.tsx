@@ -1,8 +1,8 @@
 import React from 'react'
-import { useTrimInput } from '../src'
 import { renderHook, act } from '@testing-library/react-hooks'
 import { Input } from 'antd'
 import { mount } from 'enzyme'
+import { useTrimInput } from '../src'
 
 describe('useTrimInput', () => {
   let trimInput

@@ -32,7 +32,7 @@
     "build:es": "tsc -m esNext --outDir es",
     "clean": "rimraf lib es",
     "release": "standard-version",
-    "prepublish": "yarn build",
+    "prepublishOnly": "yarn build",
     "test": "jest",
     "coverage": "yarn test --coverage",
     "ci:coverage": "npm run coverage && codecov",
@@ -73,8 +73,8 @@
     }
   },
   "peerDependencies": {
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0"
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0"
   },
   "dependencies": {
     "history": "^4.10.1",
@@ -82,12 +82,12 @@
     "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.5",
+    "@babel/core": "^7.7.7",
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.7.4",
     "@babel/plugin-proposal-optional-chaining": "^7.7.5",
-    "@babel/preset-env": "^7.7.6",
+    "@babel/preset-env": "^7.7.7",
     "@babel/preset-react": "^7.7.4",
-    "@babel/preset-typescript": "^7.7.4",
+    "@babel/preset-typescript": "^7.7.7",
     "@commitlint/config-conventional": "^8.2.0",
     "@semantic-release/changelog": "^3.0.6",
     "@semantic-release/git": "^7.0.18",
@@ -103,9 +103,8 @@
     "@testing-library/react-hooks": "^3.2.1",
     "@types/enzyme": "^3.10.4",
     "@types/history": "^4.7.3",
-    "@types/jest": "^24.0.18",
-    "@types/react": "^16.9.2",
-    "@types/react-dom": "^16.9.0",
+    "@types/jest": "^24.0.24",
+    "@types/lodash": "^4.14.149",
     "@types/react-router": "^5.1.3",
     "@types/react-router-dom": "^5.1.3",
     "@types/storybook__react": "^4.0.2",
@@ -134,6 +133,7 @@
     "husky": "^3.1.0",
     "jest": "^24.9.0",
     "lint-staged": "^9.5.0",
+    "lodash": "^4.17.15",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
