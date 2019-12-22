@@ -3,26 +3,18 @@ import { useCallback, useEffect } from 'react'
 type UseNextTickParams = (handler?: () => void) => void
 
 const useNextTick = (fn?: UseNextTickParams) => {
-  let timer
-
-  const nextTick = useCallback(
-    (handler?: UseNextTickParams) => {
-      if (handler) {
-        timer = setTimeout(handler, 0)
-      }
-    },
-    [timer],
-  )
+  const nextTick = useCallback((handler?: UseNextTickParams) => {
+    if (handler) {
+      Promise.resolve().then(() => handler())
+    }
+  }, [])
 
   useEffect(() => {
     if (fn) {
       nextTick(fn)
-      return () => {
-        clearTimeout(timer)
-      }
     }
     return () => {}
-  }, [nextTick, timer, fn])
+  }, [nextTick, fn])
 
   return fn ?? nextTick
 }
