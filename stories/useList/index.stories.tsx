@@ -11,7 +11,6 @@ export default {
 export const Example = () => {
   const { list, onAdd, onRemove, onReset, onClear, onGetTitle } = useList({
     title: '表单',
-    count: 2,
   })
   return (
     <>
