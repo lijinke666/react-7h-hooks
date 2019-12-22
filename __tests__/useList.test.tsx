@@ -57,4 +57,20 @@ describe('useList', () => {
     })
     expect(result.current.list).toHaveLength(0)
   })
+
+  it('should reset list when call onReset', () => {
+    const { result } = renderHook(() => useList({ count: 2 }))
+    act(() => {
+      result.current.onReset()
+    })
+    expect(result.current.list).toHaveLength(2)
+  })
+
+  it('should clear list when call onClear', () => {
+    const { result } = renderHook(() => useList({ count: 2 }))
+    act(() => {
+      result.current.onClear()
+    })
+    expect(result.current.list).toHaveLength(0)
+  })
 })
