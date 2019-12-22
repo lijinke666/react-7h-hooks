@@ -24,7 +24,7 @@ describe('useNextTick', () => {
 
     setTimeout(() => {
       expect(handler).toHaveBeenCalled()
-    }, 0)
+    }, 100)
   })
   it('should return handler', () => {
     const nextTick = autoTrigger.result.current
