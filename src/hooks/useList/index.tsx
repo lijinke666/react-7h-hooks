@@ -13,6 +13,7 @@ export interface UseListReturn {
   onAdd: () => void
   onRemove: (id: number) => void
   onReset: () => void
+  onClear: () => void
   onGetTitle: (id?: number) => string | React.ReactNode
 }
 
@@ -34,7 +35,19 @@ const useList = (
     [list],
   )
 
+  const getList = useCallback(() => {
+    if (!count) {
+      return []
+    }
+    return new Array(count).fill(null).map((_, i) => i)
+  }, [count])
+
   const onReset = useCallback(() => {
+    setList(getList)
+    setId(count ?? _DEFAULT_ID_)
+  }, [])
+
+  const onClear = useCallback(() => {
     setList([])
     setId(_DEFAULT_ID_)
   }, [])
@@ -52,7 +65,7 @@ const useList = (
   useEffect(() => {
     if (count) {
       setId(count)
-      setList(new Array(count).fill(null).map((_, i) => i))
+      setList(getList())
     } else {
       setId(_DEFAULT_ID_)
       setList([])
@@ -64,6 +77,7 @@ const useList = (
     onAdd,
     onRemove,
     onReset,
+    onClear,
     onGetTitle,
   }
 }

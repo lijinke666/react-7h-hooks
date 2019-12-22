@@ -9,9 +9,9 @@ export default {
 }
 
 export const Example = () => {
-  const { list, onAdd, onRemove, onReset, onGetTitle } = useList({
+  const { list, onAdd, onRemove, onReset, onClear, onGetTitle } = useList({
     title: '表单',
-    count: 0,
+    count: 2,
   })
   return (
     <>
@@ -29,9 +29,14 @@ export const Example = () => {
         <Icon type="plus" /> 新增
       </Button>
       {list.length >= 1 && (
-        <Button type="danger" onClick={onReset}>
-          重置
-        </Button>
+        <>
+          <Button type="danger" onClick={onReset}>
+            重置
+          </Button>
+          <Button type="dashed" onClick={onClear}>
+            清空
+          </Button>
+        </>
       )}
     </>
   )
