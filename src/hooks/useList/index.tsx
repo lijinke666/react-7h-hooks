@@ -28,7 +28,7 @@ const useList = (
   }, [list, id])
 
   const onRemove = useCallback(
-    (currentListId: number) => () => {
+    (currentListId: number) => {
       setList(list.filter(listId => listId !== currentListId))
     },
     [list],

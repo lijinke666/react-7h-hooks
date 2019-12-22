@@ -19,7 +19,7 @@ export const Example = () => {
         return (
           <Form.Item label={onGetTitle(id)} key={id}>
             <Input />
-            <Button type="dashed" onClick={onRemove(id)}>
+            <Button type="dashed" onClick={() => onRemove(id)}>
               <Icon type="plus" /> 删除
             </Button>
           </Form.Item>
