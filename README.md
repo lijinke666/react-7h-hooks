@@ -21,8 +21,7 @@ react-7h-hooks
     <img src="https://codecov.io/gh/lijinke666/react-7h-hooks/branch/master/graph/badge.svg" />
   </a>
     <a href="https://app.netlify.com/sites/react-7h-hooks/deploys">
-    <img src="https://github.com/lijinke666/react-7h-hooks
-/workflows/Node%20CI/badge.svg" />
+    <img src="https://github.com/lijinke666/react-7h-hooks/workflows/Node%20CI/badge.svg" />
   </a>
   <a href="https://app.netlify.com/sites/react-7h-hooks/deploys">
     <img src="https://api.netlify.com/api/v1/badges/216fcb8a-7c65-47f1-a1eb-040dbaeb4548/deploy-status" />
