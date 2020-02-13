@@ -11,7 +11,7 @@
   "license": "MIT",
   "files": [
     "lib/",
-    "esm/",
+    "es/",
     "package.json",
     "README.md"
   ],
@@ -109,7 +109,7 @@
     "@types/react-router-dom": "^5.1.3",
     "@typescript-eslint/eslint-plugin": "^2.15.0",
     "@typescript-eslint/parser": "^2.15.0",
-    "antd": "^3.26.6",
+    "antd": "^3.26.9",
     "awesome-typescript-loader": "^5.2.1",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
@@ -139,6 +139,6 @@
     "react-test-renderer": "^16.12.0",
     "semantic-release": "^16.0.1",
     "standard-version": "^7.0.1",
-    "typescript": "^3.7.4"
+    "typescript": "^3.7.5"
   }
 }
