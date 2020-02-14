@@ -74,6 +74,7 @@ export const Example = () => {
 
 - [swr](https://github.com/zeit/swr) 网络请求
 - [react-use](https://github.com/streamich/react-use) 常用的一些基础 hooks
+- [@umijs/hooks](https://github.com/umijs/hooks) 乌米提供的一些实用的高级 hooks
 
 ## :page_facing_up: License
 
