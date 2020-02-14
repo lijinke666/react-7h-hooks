@@ -3,12 +3,11 @@ import React, { useEffect, useState, useCallback } from 'react'
 import { Modal, Button } from 'antd'
 import { Router } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
-import { withRouter } from 'react-router'
 import { createPromptContextProvider, usePrompt } from '../../src'
 
 const history = createBrowserHistory()
 
-const Component = withRouter(() => {
+const Component = () => {
   const {
     setPromptWhenWillLeave,
     setConfirmTips,
@@ -63,7 +62,7 @@ const Component = withRouter(() => {
       </p>
     </>
   )
-})
+}
 
 export const Example = () => {
   const PromptContextProvider = createPromptContextProvider()

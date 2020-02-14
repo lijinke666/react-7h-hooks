@@ -4,7 +4,7 @@ module.exports = {
     'prettier',
     'plugin:react/recommended',
     'plugin:import/typescript',
-    "plugin:prettier/recommended",
+    'plugin:prettier/recommended',
     'prettier/react',
     'prettier/@typescript-eslint',
   ],
@@ -12,7 +12,7 @@ module.exports = {
     browser: true,
     node: true,
     es6: true,
-    jest: true
+    jest: true,
   },
   settings: {
     react: {
@@ -20,7 +20,14 @@ module.exports = {
     },
   },
   parser: '@typescript-eslint/parser',
-  plugins: ['react', 'babel', 'jest','prettier', "react-hooks",'@typescript-eslint'],
+  plugins: [
+    'react',
+    'babel',
+    'jest',
+    'prettier',
+    'react-hooks',
+    '@typescript-eslint',
+  ],
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
@@ -30,9 +37,9 @@ module.exports = {
     },
   ],
   rules: {
-    "prettier/prettier": "error",
-    "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": 0,
+    'prettier/prettier': 'error',
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 0,
     camelcase: 0,
     'react/jsx-one-expression-per-line': 0,
     'react/prop-types': 0,
@@ -67,5 +74,6 @@ module.exports = {
     'global-require': 0,
     'import/extensions': 0,
     'import/prefer-default-export': 0,
+    'no-param-reassign': 0,
   },
-};
+}
