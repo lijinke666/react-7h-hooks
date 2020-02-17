@@ -47,11 +47,12 @@ export default {
 }
 
 interface Schema {
-  name: String
-  age: Number
+  name: string
+  age: number
   like: boolean
   success: boolean
   page: number
+  friends: string[]
 }
 
 export const Example = () => {
@@ -63,6 +64,7 @@ export const Example = () => {
 }
 
 const App = () => {
+  // TODO: 尝试将 schema 转换成 class 这样就不用写两次
   const schema = {
     name: UseSearchParamsSchemaType.STRING,
     like: UseSearchParamsSchemaType.BOOLEAN,
@@ -79,10 +81,12 @@ const App = () => {
       type: UseSearchParamsSchemaType.NUMBER,
       default: 1,
     },
+    friends: UseSearchParamsSchemaType.ARRAY,
   }
   const { searchParams, set, remove, reset } = useSearchParams<Schema>({
     schema,
   })
+
   const { search } = useLocation()
 
   return (
@@ -96,6 +100,7 @@ const App = () => {
             like: false,
             success: true,
             age: 18,
+            friends: ['a', 'b'],
           })
         }}
       >
