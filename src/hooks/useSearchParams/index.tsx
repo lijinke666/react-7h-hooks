@@ -1,8 +1,6 @@
 import { useCallback, useMemo, useEffect } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 
-// FIXME: 不能一次性移除掉所有参数
-
 export interface UseSearchParamsParams {
   schema: UseSearchParamsSchema
   pathname?: string
@@ -32,7 +30,7 @@ export enum UseSearchParamsSchemaType {
   BOOLEAN = 'BOOLEAN',
 }
 
-const useSearchParams = <T extends {}>({
+const useSearchParams = <T extends unknown>({
   schema,
   pathname: _pathname,
 }: UseSearchParamsParams): UseSearchParamsReturn<T> => {
