@@ -26,11 +26,11 @@ global.cancelAnimationFrame = function(id) {
 }
 copyProps(window, global)
 
-jest.mock('react-router-dom', () => ({
-  ...jest.requireActual('react-router-dom'),
-  useHistory: () => ({
-    push: jest.fn(),
-  }),
-}))
+// jest.mock('react-router-dom', () => ({
+//   ...jest.requireActual('react-router-dom'),
+//   useHistory: () => ({
+//     push: jest.fn(),
+//   }),
+// }))
 
 Enzyme.configure({ adapter: new Adapter() })

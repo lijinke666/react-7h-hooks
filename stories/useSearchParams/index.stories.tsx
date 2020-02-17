@@ -2,11 +2,11 @@ import React from 'react'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { Button, Table } from 'antd'
 import { Router, useLocation } from 'react-router-dom'
-import { createBrowserHistory } from 'history'
+import { createMemoryHistory } from 'history'
 import { useSearchParams } from '../../src'
 import { UseSearchParamsSchemaType } from '../../src/hooks/useSearchParams'
 
-const history = createBrowserHistory()
+const history = createMemoryHistory()
 
 const dataSource = [
   {
@@ -64,7 +64,6 @@ export const Example = () => {
 }
 
 const App = () => {
-  // TODO: 尝试将 schema 转换成 class 这样就不用写两次
   const schema = {
     name: UseSearchParamsSchemaType.STRING,
     like: UseSearchParamsSchemaType.BOOLEAN,

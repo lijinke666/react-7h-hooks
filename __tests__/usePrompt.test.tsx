@@ -3,17 +3,29 @@ import { renderHook, act } from '@testing-library/react-hooks'
 import { shallow } from 'enzyme'
 import { Prompt } from 'react-router-dom'
 import { usePrompt, createPromptContextProvider } from '../src'
+import { routerWrapper } from './router'
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useHistory: () => ({
+    push: jest.fn(),
+  }),
+}))
 
 describe('usePrompt', () => {
   let prompt
   beforeAll(() => {
-    prompt = renderHook(() =>
-      usePrompt({
-        title: 'title',
-        description: 'description',
-        okText: 'ok',
-        cancelText: 'cancel',
-      }),
+    prompt = renderHook(
+      () =>
+        usePrompt({
+          title: 'title',
+          description: 'description',
+          okText: 'ok',
+          cancelText: 'cancel',
+        }),
+      {
+        wrapper: routerWrapper,
+      },
     )
   })
   it('should be defined', () => {
