@@ -1,7 +1,7 @@
 import { useCallback, useMemo, useEffect } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 
-// TODO: 支持数组
+// FIXME: 不能一次性移除掉所有参数
 
 export interface UseSearchParamsParams {
   schema: UseSearchParamsSchema
@@ -74,24 +74,31 @@ const useSearchParams = <T extends {}>({
     })
   }, [defaultValues])
 
+  const updateLocation = useCallback(() => {
+    urlSearchParams.sort()
+    history.push({
+      pathname,
+      search: urlSearchParams.toString(),
+    })
+  }, [history, pathname])
+
   const set = useCallback(
     (values: Partial<T>) => {
-      const mergedValues = {
-        ...defaultValues,
-        ...values,
-      }
-      Object.keys(mergedValues).forEach(key => {
-        const value = mergedValues[key]
+      Object.keys(values).forEach(key => {
+        const value = values[key]
         if (value) {
-          urlSearchParams.set(key, (value as unknown) as string)
+          if (Array.isArray(value)) {
+            value.forEach(v => {
+              urlSearchParams.append(key, v)
+            })
+          } else {
+            urlSearchParams.set(key, (value as unknown) as string)
+          }
         }
       })
-      history.push({
-        pathname,
-        search: urlSearchParams.toString(),
-      })
+      updateLocation()
     },
-    [history, defaultValues],
+    [updateLocation],
   )
 
   const parseValue = (key: string, value: string) => {
@@ -108,19 +115,14 @@ const useSearchParams = <T extends {}>({
       case UseSearchParamsSchemaType.BOOLEAN:
         newValue = value === 'true'
         break
+      case UseSearchParamsSchemaType.ARRAY:
+        newValue = urlSearchParams.getAll(key)
+        break
       default:
         break
     }
     return newValue
   }
-
-  const updateLocation = useCallback(() => {
-    urlSearchParams.sort()
-    history.push({
-      pathname,
-      search: urlSearchParams.toString(),
-    })
-  }, [history, pathname])
 
   const remove = useCallback(
     (keys?: Array<keyof T>) => {

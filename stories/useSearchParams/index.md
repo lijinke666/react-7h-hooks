@@ -49,6 +49,11 @@ export const Example = () => {
 
 ## API
 
+```tsx
+const { searchParams, set, remove, reset } = useSearchParams(options)
+
+```
+
 | 属性             | 说明                               | 类型                              | 默认值              |
 | ---------------- | ---------------------------------- | --------------------------------- | ------------------- |
 | options.schema   | 字段的映射关系                     | `UseSearchParamsSchema`           | `-`                 |
@@ -56,6 +61,7 @@ export const Example = () => {
 | searchParams     | 按照schema规则转换之后的查询参数   | `{ [key: string]: any }`          | `-`                 |
 | set              | 设置参数，如果已存在,则会覆盖      | `(values: Partial<T>) => void`    | `-`                 |
 | remove           | 移除参数，如果不传参数, 则移除所有 | `(keys?: Array<keyof T>) => void` | `-`                 |
+| reset            | 重置所有参数                       | `() => void`                      | `-`                 |
 
 ```tsx
 export interface UseSearchParamsSchema {
