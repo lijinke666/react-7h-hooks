@@ -80,7 +80,7 @@ const App = () => {
       default: 1,
     },
   }
-  const { searchParams, set, remove } = useSearchParams<Schema>({
+  const { searchParams, set, remove, reset } = useSearchParams<Schema>({
     schema,
   })
   const { search } = useLocation()
@@ -93,9 +93,9 @@ const App = () => {
         onClick={() => {
           set({
             name: 'test',
-            age: 1,
             like: false,
             success: true,
+            age: 18,
           })
         }}
       >
@@ -113,7 +113,6 @@ const App = () => {
       <h2>移除某个属性</h2>
       <Button
         type="danger"
-        style={{ marginRight: 10 }}
         onClick={() => {
           remove(['name'])
         }}
@@ -122,11 +121,20 @@ const App = () => {
       </Button>
       <Button
         type="danger"
+        style={{ margin: '0 10px' }}
         onClick={() => {
           remove()
         }}
       >
         移除所有属性
+      </Button>
+      <Button
+        type="danger"
+        onClick={() => {
+          reset()
+        }}
+      >
+        重置
       </Button>
 
       <h2>与 Antd Table 结合</h2>
