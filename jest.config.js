@@ -170,7 +170,9 @@ module.exports = {
   // timers: "real",
 
   // A map from regular expressions to paths to transformers
-  // transform: null,
+  // transform: {
+  //   '^.+\\.mdx$': '@storybook/addon-docs/jest-transform-mdx',
+  // },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
   // transformIgnorePatterns: [
