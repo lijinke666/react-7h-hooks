@@ -4,5 +4,5 @@ import { name, repository } from '../package.json'
 export default create({
   base: 'light',
   brandTitle: name,
-  brandUrl: repository
+  brandUrl: repository,
 })

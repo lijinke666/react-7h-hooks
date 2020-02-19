@@ -11,4 +11,9 @@ addParameters({
   options: {
     theme,
   },
+  viewport: {
+    viewports: {
+      name: '设备',
+    },
+  },
 })

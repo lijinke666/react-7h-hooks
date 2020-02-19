@@ -6,6 +6,13 @@ import { createMemoryHistory } from 'history'
 import { useSearchParams } from '../../src'
 import { UseSearchParamsSchemaType } from '../../src/hooks/useSearchParams'
 
+export default {
+  title: 'useSearchParams',
+  parameters: {
+    notes: require('./index.md'),
+  },
+}
+
 const history = createMemoryHistory()
 
 const dataSource = [
@@ -41,11 +48,6 @@ const columns = [
   },
 ]
 
-export default {
-  title: 'useSearchParams',
-  parameters: { notes: require('./index.md') },
-}
-
 interface Schema {
   name: string
   age: number
@@ -55,15 +57,52 @@ interface Schema {
   friends: string[]
 }
 
-export const Example = () => {
+export const Example = () => (
+  <Router history={history}>
+    <Base />
+  </Router>
+)
+
+export const TableExample = () => (
+  <Router history={history}>
+    <TablePage />
+  </Router>
+)
+
+const TablePage = () => {
+  const schema = {
+    page: {
+      type: UseSearchParamsSchemaType.NUMBER,
+      default: 1,
+    },
+  }
+  const { searchParams, set, remove } = useSearchParams<Schema>({
+    schema,
+  })
   return (
-    <Router history={history}>
-      <App />
-    </Router>
+    <>
+      <h2>与 Antd Table 结合</h2>
+      <hr />
+      <pre>{JSON.stringify(searchParams, undefined, 2)}</pre>
+      <Button type="primary" onClick={() => remove(['page'])}>
+        移除page属性
+      </Button>
+      <Table
+        columns={columns}
+        dataSource={dataSource}
+        pagination={{
+          current: searchParams.page,
+          pageSize: 1,
+          onChange(page) {
+            set({ page })
+          },
+        }}
+      />
+    </>
   )
 }
 
-const App = () => {
+const Base = () => {
   const schema = {
     name: UseSearchParamsSchemaType.STRING,
     like: UseSearchParamsSchemaType.BOOLEAN,
@@ -75,10 +114,6 @@ const App = () => {
     test: {
       type: UseSearchParamsSchemaType.STRING,
       default: 'defaultValue',
-    },
-    page: {
-      type: UseSearchParamsSchemaType.NUMBER,
-      default: 1,
     },
     friends: UseSearchParamsSchemaType.ARRAY,
   }
@@ -140,22 +175,6 @@ const App = () => {
       >
         重置
       </Button>
-
-      <h2>与 Antd Table 结合</h2>
-      <Button type="primary" onClick={() => remove(['page'])}>
-        移除page属性
-      </Button>
-      <Table
-        columns={columns}
-        dataSource={dataSource}
-        pagination={{
-          current: searchParams.page,
-          pageSize: 1,
-          onChange(page) {
-            set({ page })
-          },
-        }}
-      />
     </div>
   )
 }
