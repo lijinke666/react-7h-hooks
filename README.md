@@ -4,7 +4,7 @@ react-7h-hooks
 </h1>
 
 <h4 align="center">
-提供一些业务 react hooks , 让你每天只工作 7 小时
+提供一些偏业务的实用 react hooks, 让你每天只工作 7 小时 !
 </h4>
 
 <p align="center">
