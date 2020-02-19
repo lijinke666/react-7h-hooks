@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/lijinke666/react-7h-hooks/compare/v0.4.0...v0.5.0) (2020-02-19)
+
+
+### Features
+
+* **use-search-params:** 新增测试 ([8a64f06](https://github.com/lijinke666/react-7h-hooks/commit/8a64f06be0f1cf0cfcedf345cadff3bd891fc573))
+* **use-search-params:** 新增搜索参数与数据的联动hook [待优化] ([e0b2b38](https://github.com/lijinke666/react-7h-hooks/commit/e0b2b380ba5042948bed356f9bea3dc22822aa06))
+* **use-search-params:** 增加 reset 方法 ([c02ec52](https://github.com/lijinke666/react-7h-hooks/commit/c02ec52cea9a8345ea294c19659dcedeea1545ee))
+* **use-search-params:** 支持 array 类型 ([fd7ff09](https://github.com/lijinke666/react-7h-hooks/commit/fd7ff09456ef63dcb92b517bddda89ff94cb5383))
+
+
+### Bug Fixes
+
+* **use-search-params:** 修复重置和删除全部无效的问题 ([741c528](https://github.com/lijinke666/react-7h-hooks/commit/741c52841779ed7c5824059de7b50855d1a55ce0))
+* 修复 github CI ([490b5a8](https://github.com/lijinke666/react-7h-hooks/commit/490b5a858336ba218fb94437cfa8111472f8f640))
+
 ## [0.4.0](https://github.com/lijinke666/react-7h-hooks/compare/v0.3.1...v0.4.0) (2019-12-22)
 
 
