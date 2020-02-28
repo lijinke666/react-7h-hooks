@@ -39,7 +39,7 @@ const useList = (
     if (!count) {
       return []
     }
-    return new Array(count).fill(null).map((_, i) => i)
+    return Array.from({ length: count }, (_, i) => i)
   }, [count])
 
   const onReset = useCallback(() => {

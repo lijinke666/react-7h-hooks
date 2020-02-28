@@ -1,5 +1,5 @@
 import React from 'react'
-import { Prompt } from 'react-router'
+import { Prompt } from 'react-router-dom'
 import PromptContext, { PromptValueProps, PromptTipsProps } from './prompt'
 import usePrompt from '../hooks/usePrompt'
 

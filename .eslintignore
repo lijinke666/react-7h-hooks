@@ -5,3 +5,5 @@ coverage
 .history
 storebook-static
 yarn.lock
+stories
+.docz
