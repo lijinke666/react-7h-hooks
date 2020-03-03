@@ -75,8 +75,8 @@ const Example = () => {
 }
 
 const App = () => {
-  const history = createBrowserHistory()
   const PromptContextProvider = createPromptContextProvider()
+  const history = createBrowserHistory()
 
   return (
     <Router history={history}>
@@ -94,7 +94,7 @@ const App = () => {
   )
 }
 
-export default Example
+export default App
 ```
 
 ```jsx
@@ -150,8 +150,8 @@ const Example = () => {
 }
 
 const App = () => {
-  const history = createBrowserHistory()
   const PromptContextProvider = createPromptContextProvider()
+  const history = createBrowserHistory()
 
   return (
     <Router history={history}>
@@ -169,7 +169,7 @@ const App = () => {
   )
 }
 
-export default Example
+export default App
 ```
 
 ```jsx
@@ -203,7 +203,7 @@ const Example = () => {
       okText: '确定离开',
       cancelText: '取消',
     })
-  }, [setConfirmTips])
+  }, [])
 
   return (
     <Button onClick={() => history.push('/test')}>
@@ -213,8 +213,8 @@ const Example = () => {
 }
 
 const App = () => {
-  const history = createBrowserHistory()
   const PromptContextProvider = createPromptContextProvider()
+  const history = createBrowserHistory()
 
   return (
     <Router history={history}>
@@ -232,44 +232,35 @@ const App = () => {
   )
 }
 
-export default Example
+export default App
 ```
 
 ## API
 
 | 属性                             | 说明                                | 类型                                                | 默认值               |
 | -------------------------------- | ----------------------------------- | --------------------------------------------------- | -------------------- |
-| setPromptWhenWillLeave           | 设置当前页面是否需要提示            | `SetPromptWhenWillLeaveProps`                       | `-`                  |
-| setConfirmTips                   | 设置提示文本                        | `PromptTipsProps`                                   | `DefaultConfirmTips` |
+| setPromptWhenWillLeave           | 设置当前页面是否需要提示            | `(options: SetPromptWhenWillLeaveProps) => void`    | `-`                  |
+| setConfirmTips                   | 设置提示文本                        | `(options: PromptTipsProps) => void`                | `DefaultConfirmTips` |
 | isConfirmToLeaveFromCancelAction | 是否点击了确认                      | `boolean`                                           | `false`              |
 | createPromptContextProvider      | 创建一个 prompt 的 context Provider | `(history: History, defaultConfirmTips) => Context` | `-`                  |
 
 
 ## SetPromptWhenWillLeaveProps
 
-```js
-(options?: {
-  cancelAction?: boolean
-  prompt?: boolean
-}) => void
-```
-
-## DefaultConfirmTips
-
-```js
-{ title: '确认离开?', description: '离开不保留任何数据', okText: '确认', cancelText: '取消', }
-```
+| 属性                 | 说明       | 类型      | 默认值  |
+| -------------------- | ---------- | --------- | ------- |
+| options.cancelAction | 是否是取消 | `boolean` | `false` |
+| options.prompt       | 是否提示   | `boolean` | `false` |
 
 ## PromptTipsProps
 
-```js
-export interface PromptTipsProps {
-  title?: React.ReactNode | string
-  description?: React.ReactNode | string
-  okText?: React.ReactNode | string
-  cancelText?: React.ReactNode | string
-}
-```
+| 属性                | 说明         | 类型                  | 默认值               |
+| ------------------- | ------------ | --------------------- | -------------------- |
+| options.title       | 标题         | `ReactNode \| string` | `确认离开?`          |
+| options.description | 描述         | `ReactNode \| string` | `离开不保留任何数据` |
+| options.okText      | 确认按钮文本 | `ReactNode \| string` | `确认`               |
+| options.cancelText  | 取消按钮文本 | `ReactNode \| string` | `取消`               |
+
 
 ## PromptValueProps
 
@@ -280,6 +271,7 @@ export interface PromptTipsProps {
   okText?: React.ReactNode | string
   cancelText?: React.ReactNode | string
 }
+
 export interface PromptValueProps extends PromptTipsProps {
   visible: boolean
   onConfirm: () => void
