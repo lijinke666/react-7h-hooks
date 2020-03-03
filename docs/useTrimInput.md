@@ -6,14 +6,18 @@
 
 - 当需要去除用户输入的文本的前后空格 或全部空格时
 
-## 如何使用
+## 代码演示
 
 ```jsx
+/**
+ * title: 基本使用
+ * desc: 去除前后空格和所有空格
+ */
 import React from 'react'
-import { useTrimInput } from 'react-7h-hooks'
 import { Form, Input } from 'antd'
+import { useTrimInput } from '../src/index.tsx'
 
-export const Example = () => {
+const Example = () => {
   const [trimValue, setTrimValue] = useTrimInput()
   const [fullTrimValue, setFullTrimValue] = useTrimInput(true)
   return (
@@ -36,12 +40,18 @@ export const Example = () => {
   )
 }
 
-
+export default Example
 ```
 
 ## API
 
-| 属性                  | 说明                             | 类型      | 默认值  |
-| --------------------- | -------------------------------- | --------- | ------- |
-| (isFullTrim: Boolean) | 是否全部去除(默认只去除首尾空格) | `boolean` | `false` |
+```js
+const [trimValue, setTrimValue] = useTrimInput(isFullTrim)
+```
+
+| 属性         | 说明                             | 类型                      | 默认值  |
+| ------------ | -------------------------------- | ------------------------- | ------- |
+| isFullTrim   | 是否全部去除(默认只去除首尾空格) | `boolean`                 | `false` |
+| trimValue    | 值                               | `string`                  | `-`     |
+| setTrimValue | 设置值                           | `(value: string) => void` | `-`     |
 
