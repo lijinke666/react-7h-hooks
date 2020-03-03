@@ -6,6 +6,8 @@ yarn-debug.log*
 yarn-error.log*
 .vscode
 .docz
+dist
+src/.umi
 
 # Runtime data
 pids
