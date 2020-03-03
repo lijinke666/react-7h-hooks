@@ -3,6 +3,8 @@ import pkg from './package.json'
 export default {
   title: pkg.name,
   description: pkg.description,
+  favicon: './docs/logo.png',
+  logo: './docs/logo.png',
   resolve: {
     includes: ['docs', 'src'],
   },
