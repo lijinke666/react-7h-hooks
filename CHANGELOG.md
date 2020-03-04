@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [0.6.0](https://github.com/lijinke666/react-7h-hooks/compare/v0.5.0...v0.6.0) (2020-03-04)
 
+### Features
+
+* **use-download:**  增强下载功能, 支持json,text,url 三种模式 ([d6a2db6](https://github.com/lijinke666/react-7h-hooks/commit/d5a2db656a1fe892927939eeb766d4a762118f1f))
+
 ## [0.5.0](https://github.com/lijinke666/react-7h-hooks/compare/v0.4.0...v0.5.0) (2020-02-19)
 
 

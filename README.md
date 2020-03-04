@@ -1,6 +1,6 @@
 
 <p align="center">
- <img src="./docs/logo.png" alt="logo" width=100"">
+ <img src="https://cdn.lijinke.cn/7h-hook.png" alt="logo" width=100"">
 </p>
 
 <h1 align="center">
