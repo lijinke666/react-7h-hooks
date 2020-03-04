@@ -10,11 +10,11 @@
 
 ```jsx
 /**
- * title: 基本使用
- * desc: 下载图片
+ * title: 下载JSON文件
+ * desc: 指定文件类型 type = `json`
  */
 import React, { useCallback } from 'react'
-import { useDownload } from '../src/index.tsx'
+import { useDownload } from 'react-7h-hooks'
 import { Button } from 'antd'
 
 const Example = () => {
@@ -22,15 +22,78 @@ const Example = () => {
 
   const onClick = useCallback(() => {
     const instance = createDownloadInstance({
-      name: 'favicon',
-      // data: require('../favicon.ico'),
+      name: 'test.json',
+      data: { text: '这是一个JSON文件' },
+      type: 'json',
     })
     instance.download()
   }, [])
 
   return (
     <Button icon="download" type="primary" onClick={onClick}>
-      下载图标
+      点击下载
+    </Button>
+  )
+}
+
+export default Example
+```
+
+```jsx
+/**
+ * title: 下载文本
+ * desc: 指定文件类型 type = `text`
+ */
+import React, { useCallback } from 'react'
+import { useDownload } from 'react-7h-hooks'
+import { Button } from 'antd'
+
+const Example = () => {
+  const createDownloadInstance = useDownload()
+
+  const onClick = useCallback(() => {
+    const instance = createDownloadInstance({
+      name: 'test.txt',
+      data: '一段文本',
+      type: 'text',
+    })
+    instance.download()
+  }, [])
+
+  return (
+    <Button icon="download" type="primary" onClick={onClick}>
+      点击下载
+    </Button>
+  )
+}
+
+export default Example
+```
+
+```jsx
+/**
+ * title: 下载线上图片
+ * desc: 指定一个url地址 type = `url`
+ */
+import React, { useCallback } from 'react'
+import { useDownload } from 'react-7h-hooks'
+import { Button } from 'antd'
+
+const Example = () => {
+  const createDownloadInstance = useDownload()
+
+  const onClick = useCallback(() => {
+    const instance = createDownloadInstance({
+      name: 'logo.png',
+      data: 'https://cdn.lijinke.cn/7h-hook.png',
+      type: 'url',
+    })
+    instance.download()
+  }, [])
+
+  return (
+    <Button icon="download" type="primary" onClick={onClick}>
+      点击下载
     </Button>
   )
 }
@@ -45,9 +108,8 @@ const createDownloadInstance = useDownload(options)
 createDownloadInstance.download()
 ```
 
-| 属性         | 说明     | 类型             | 默认值 |
-| ------------ | -------- | ---------------- | ------ |
-| options.name | 文件名   | `string`         | `-`    |
-| options.data | 文件内容 | `string \| Blob` | `-`    |
-| options.type | 文件类型 | `string`         | `-`    |
-
+| 属性         | 说明     | 类型                      | 默认值 |
+| ------------ | -------- | ------------------------- | ------ |
+| options.name | 文件名   | `string`                  | `-`    |
+| options.data | 文件内容 | `any`        | `-`    |
+| options.type | 文件类型 | `text` \| `json` \| `url` | `-`    |

@@ -1,12 +1,11 @@
 # useSearchParams
 
-对 `URLSearchParams` 的一系列封装, 来处理 URL 的查询字符串, 通过定义 `schema`
-解决 URL 字符串 和 Search params 之间的格式互转, 同时内部会调用 `history.push` 进行 浏览记录的同步
+对 `URLSearchParams` 的一系列封装, 来处理 URL 的查询字符串, 通过定义 `schema` 解决 URL 字符串 和 Search params 之间的格式互转, 同时内部会调用 `history.push` 进行 浏览记录的同步
 
 ## 使用场景
 
 - 当列表分页时，需要将当前页码和页数同步到地址栏的 URL 上时
-- 将当前查询条件同步到URL上，以便刷新页面保存搜索结果
+- 将当前查询条件同步到 URL 上，以便刷新页面保存搜索结果
 
 ## 代码演示
 
@@ -19,7 +18,7 @@ import React from 'react'
 import { Router } from 'react-router-dom'
 import { Table, Button } from 'antd'
 import { createBrowserHistory } from 'history'
-import { useSearchParams } from '../src/index.tsx'
+import { useSearchParams } from 'react-7h-hooks'
 import { UseSearchParamsSchemaType } from '../src/hooks/useSearchParams'
 
 const history = createBrowserHistory()
@@ -65,9 +64,9 @@ const App = () => {
     },
   }
   const { searchParams, set, remove } = useSearchParams({
-    schema
+    schema,
   })
-  console.log('searchParams: ', searchParams);
+  console.log('searchParams: ', searchParams)
   return (
     <>
       <pre>{JSON.stringify(searchParams, undefined, 2)}</pre>
@@ -98,7 +97,6 @@ const Example = () => (
 export default Example
 ```
 
-
 ```jsx
 /**
  * title: 多种数据结构
@@ -109,7 +107,7 @@ import React from 'react'
 import { Router, useLocation } from 'react-router-dom'
 import { Button } from 'antd'
 import { createBrowserHistory } from 'history'
-import { useSearchParams } from '../src/index.tsx'
+import { useSearchParams } from 'react-7h-hooks'
 import { UseSearchParamsSchemaType } from '../src/hooks/useSearchParams'
 
 const history = createBrowserHistory()
@@ -200,23 +198,20 @@ const Example = () => (
 export default Example
 ```
 
-
 ## API
 
 ```js
 const { searchParams, set, remove, reset } = useSearchParams(options)
-
 ```
 
-| 属性             | 说明                               | 类型                              | 默认值              |
-| ---------------- | ---------------------------------- | --------------------------------- | ------------------- |
-| options.schema   | 字段的映射关系                     | `UseSearchParamsSchema`           | `-`                 |
-| options.pathname | push的路径名, 默认当前路径名       | `string`                          | `location.pathname` |
-| searchParams     | 按照schema规则转换之后的查询参数   | `{ [key: string]: any }`          | `-`                 |
-| set              | 设置参数，如果已存在,则会覆盖      | `(values: Partial<T>) => void`    | `-`                 |
-| remove           | 移除参数，如果不传参数, 则移除所有 | `(keys?: Array<keyof T>) => void` | `-`                 |
-| reset            | 重置所有参数                       | `() => void`                      | `-`                 |
-
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| options.schema | 字段的映射关系 | `UseSearchParamsSchema` | `-` |
+| options.pathname | push 的路径名, 默认当前路径名 | `string` | `location.pathname` |
+| searchParams | 按照 schema 规则转换之后的查询参数 | `{ [key: string]: any }` | `-` |
+| set | 设置参数，如果已存在,则会覆盖 | `(values: Partial<T>) => void` | `-` |
+| remove | 移除参数，如果不传参数, 则移除所有 | `(keys?: Array<keyof T>) => void` | `-` |
+| reset | 重置所有参数 | `() => void` | `-` |
 
 ```js
 export interface UseSearchParamsSchema {

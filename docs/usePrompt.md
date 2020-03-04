@@ -53,13 +53,11 @@ import React, { useEffect } from 'react'
 import { Modal, Button } from 'antd'
 import { Router, useHistory } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
-import { createPromptContextProvider, usePrompt } from '../src/index.tsx'
+import { createPromptContextProvider, usePrompt } from 'react-7h-hooks'
 
 const Example = () => {
   const history = useHistory()
-  const {
-    setPromptWhenWillLeave,
-  } = usePrompt()
+  const { setPromptWhenWillLeave } = usePrompt()
 
   useEffect(() => {
     setPromptWhenWillLeave({
@@ -67,11 +65,7 @@ const Example = () => {
     })
   }, [])
 
-  return (
-    <Button onClick={() => history.push('/test')}>
-      离开当前页面
-    </Button>
-  )
+  return <Button onClick={() => history.push('/test')}>离开当前页面</Button>
 }
 
 const App = () => {
@@ -106,7 +100,7 @@ import React, { useEffect, useState, useCallback } from 'react'
 import { Modal, Button } from 'antd'
 import { Router, useHistory } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
-import { createPromptContextProvider, usePrompt } from '../src/index.tsx'
+import { createPromptContextProvider, usePrompt } from 'react-7h-hooks'
 
 const Example = () => {
   const [edit, setEdit] = useState(false)
@@ -137,7 +131,11 @@ const Example = () => {
     <>
       <p>
         当前状态: {edit ? '编辑' : '预览'}
-        {edit && <Button onClick={onCancelEdit} style={{marginLeft: 10}}>取消</Button>}
+        {edit && (
+          <Button onClick={onCancelEdit} style={{ marginLeft: 10 }}>
+            取消
+          </Button>
+        )}
       </p>
 
       <p>
@@ -181,14 +179,11 @@ import React, { useEffect } from 'react'
 import { Modal, Button } from 'antd'
 import { Router, useHistory } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
-import { createPromptContextProvider, usePrompt } from '../src/index.tsx'
+import { createPromptContextProvider, usePrompt } from 'react-7h-hooks'
 
 const Example = () => {
   const history = useHistory()
-  const {
-    setPromptWhenWillLeave,
-    setConfirmTips
-  } = usePrompt()
+  const { setPromptWhenWillLeave, setConfirmTips } = usePrompt()
 
   useEffect(() => {
     setPromptWhenWillLeave({
@@ -205,11 +200,7 @@ const Example = () => {
     })
   }, [])
 
-  return (
-    <Button onClick={() => history.push('/test')}>
-      离开当前页面
-    </Button>
-  )
+  return <Button onClick={() => history.push('/test')}>离开当前页面</Button>
 }
 
 const App = () => {
@@ -237,13 +228,12 @@ export default App
 
 ## API
 
-| 属性                             | 说明                                | 类型                                                | 默认值               |
-| -------------------------------- | ----------------------------------- | --------------------------------------------------- | -------------------- |
-| setPromptWhenWillLeave           | 设置当前页面是否需要提示            | `(options: SetPromptWhenWillLeaveProps) => void`    | `-`                  |
-| setConfirmTips                   | 设置提示文本                        | `(options: PromptTipsProps) => void`                | `DefaultConfirmTips` |
-| isConfirmToLeaveFromCancelAction | 是否点击了确认                      | `boolean`                                           | `false`              |
-| createPromptContextProvider      | 创建一个 prompt 的 context Provider | `(history: History, defaultConfirmTips) => Context` | `-`                  |
-
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| setPromptWhenWillLeave | 设置当前页面是否需要提示 | `(options: SetPromptWhenWillLeaveProps) => void` | `-` |
+| setConfirmTips | 设置提示文本 | `(options: PromptTipsProps) => void` | `DefaultConfirmTips` |
+| isConfirmToLeaveFromCancelAction | 是否点击了确认 | `boolean` | `false` |
+| createPromptContextProvider | 创建一个 prompt 的 context Provider | `(history: History, defaultConfirmTips) => Context` | `-` |
 
 ## SetPromptWhenWillLeaveProps
 
@@ -254,13 +244,12 @@ export default App
 
 ## PromptTipsProps
 
-| 属性                | 说明         | 类型                  | 默认值               |
-| ------------------- | ------------ | --------------------- | -------------------- |
-| options.title       | 标题         | `ReactNode \| string` | `确认离开?`          |
-| options.description | 描述         | `ReactNode \| string` | `离开不保留任何数据` |
-| options.okText      | 确认按钮文本 | `ReactNode \| string` | `确认`               |
-| options.cancelText  | 取消按钮文本 | `ReactNode \| string` | `取消`               |
-
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| options.title | 标题 | `ReactNode` \| `string` | `确认离开?` |
+| options.description | 描述 | `ReactNode` \| `string` | `离开不保留任何数据` |
+| options.okText | 确认按钮文本 | `ReactNode` \| `string` | `确认` |
+| options.cancelText | 取消按钮文本 | `ReactNode` \| `string` | `取消` |
 
 ## PromptValueProps
 

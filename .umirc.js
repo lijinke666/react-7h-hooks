@@ -3,8 +3,8 @@ import pkg from './package.json'
 export default {
   title: pkg.name,
   description: pkg.description,
-  favicon: './docs/logo.png',
-  logo: './docs/logo.png',
+  favicon: '//cdn.lijinke.cn/7h-hook.png',
+  logo: '//cdn.lijinke.cn/7h-hook.png',
   resolve: {
     includes: ['docs', 'src'],
   },

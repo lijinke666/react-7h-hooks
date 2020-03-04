@@ -16,7 +16,7 @@
  */
 import React, { useCallback } from 'react'
 import { Button, message } from 'antd'
-import { useNextTick } from '../src/index.tsx'
+import { useNextTick } from 'react-7h-hooks'
 
 const Example = () => {
   const reTrigger = useNextTick(() => {
@@ -36,7 +36,7 @@ export default Example
  */
 import React, { useCallback } from 'react'
 import { Button, message } from 'antd'
-import { useNextTick } from '../src/index.tsx'
+import { useNextTick } from 'react-7h-hooks'
 
 const Example = () => {
   const nextTick = useNextTick()

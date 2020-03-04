@@ -15,7 +15,7 @@
  */
 import React from 'react'
 import { Form, Input } from 'antd'
-import { useTrimInput } from '../src/index.tsx'
+import { useTrimInput } from 'react-7h-hooks'
 
 const Example = () => {
   const [trimValue, setTrimValue] = useTrimInput()
@@ -49,9 +49,8 @@ export default Example
 const [trimValue, setTrimValue] = useTrimInput(isFullTrim)
 ```
 
-| 属性         | 说明                             | 类型                      | 默认值  |
-| ------------ | -------------------------------- | ------------------------- | ------- |
-| isFullTrim   | 是否全部去除(默认只去除首尾空格) | `boolean`                 | `false` |
-| trimValue    | 值                               | `string`                  | `-`     |
-| setTrimValue | 设置值                           | `(value: string) => void` | `-`     |
-
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| isFullTrim | 是否全部去除(默认只去除首尾空格) | `boolean` | `false` |
+| trimValue | 值 | `string` | `-` |
+| setTrimValue | 设置值 | `(value: string) => void` | `-` |

@@ -5,6 +5,7 @@
 ## 使用场景
 
 - 动态表单
+- 输入一组数据时
 
 ## 代码演示
 
@@ -15,7 +16,7 @@
  */
 import React from 'react'
 import { Button, Form, Input, Icon } from 'antd'
-import { useList } from '../src/index.tsx'
+import { useList } from 'react-7h-hooks'
 
 const Example = () => {
   const { list, onAdd, onRemove, onReset, onGetTitle, onClear } = useList({
@@ -51,7 +52,6 @@ const Example = () => {
 }
 
 export default Example
-
 ```
 
 ```jsx
@@ -61,12 +61,12 @@ export default Example
  */
 import React from 'react'
 import { Button, Form, Input, Icon } from 'antd'
-import { useList } from '../src/index.tsx'
+import { useList } from 'react-7h-hooks'
 
 const Example = () => {
   const { list, onAdd, onRemove, onReset, onGetTitle, onClear } = useList({
     title: '表单',
-    count: 2
+    count: 2,
   })
   return (
     <>
@@ -98,7 +98,6 @@ const Example = () => {
 }
 
 export default Example
-
 ```
 
 ## API
@@ -107,18 +106,18 @@ export default Example
 const { list, onAdd, onRemove, onReset, onClear, onGetTitle } = useList(options)
 ```
 
-| 属性          | 说明                                       | 类型                                                                       | 默认值 |
-| ------------- | ------------------------------------------ | -------------------------------------------------------------------------- | ------ |
-| options.title | 每一项表单的名字, 支持一个函数自定义格式化 | `string \| React.ReactNode \| ((id: number) => string \| React.ReactNode)` | `-`    |
-| options.count | 默认生成的列表个数                         | `number`                                                                   | `0`    |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| options.title | 每一项表单的名字, 支持一个函数自定义格式化 | `string` \| `React.ReactNode` \| `(id: number) => string \| React.ReactNode` | `-` |
+| options.count | 默认生成的列表个数 | `number` | `0` |
 
 ## 返回值说明
 
-| 属性       | 说明                                       | 类型                                        | 默认值 |
-| ---------- | ------------------------------------------ | ------------------------------------------- | ------ |
-| list       | 一个自增 id 组成的数组, 用它来渲染你的表单 | `number[]`                                  | `-`    |
-| onAdd      | 没调用一次, list 新增一条记录              | `()=> void`                                 | `-`    |
-| onRemove   | 删除 list 对应 id 的记录                   | `( id: number)=> void`                      | `-`    |
-| onRest     | 重置 list 为初始状态                       | `()=> void`                                 | `-`    |
-| onClear    | 清空 list                                  | `()=> void`                                 | `-`    |
-| onGetTitle | 获取id 对应的标题                          | `( id: number) => string \ React.ReactNode` | `-`    |
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| list | 一个自增 id 组成的数组, 用它来渲染你的表单 | `number[]` | `-` |
+| onAdd | 没调用一次, list 新增一条记录 | `()=> void` | `-` |
+| onRemove | 删除 list 对应 id 的记录 | `( id: number)=> void` | `-` |
+| onRest | 重置 list 为初始状态 | `()=> void` | `-` |
+| onClear | 清空 list | `()=> void` | `-` |
+| onGetTitle | 获取 id 对应的标题 | `( id: number) => string | React.ReactNode` | `-` |

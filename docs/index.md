@@ -1,15 +1,18 @@
 # 介绍
 
-<img src="./logo.png" alt="logo" style="width: 100px">
+<img src="//cdn.lijinke.cn/7h-hook.png" alt="logo" style="width: 100px">
 
 **react-7h-hooks** 提供一些偏业务的实用 react hooks, 让你每天只工作 7 小时 !
 
 ![https://www.npmjs.com/package/react-7h-hooks](https://img.shields.io/npm/dm/react-7h-hooks.svg?style=flat-square)
 ![https://www.npmjs.com/package/react-7h-hooks](https://img.shields.io/npm/l/react-7h-hooks.svg?style=flat-square)
-![https://www.npmjs.com/package/react-7h-hooks](https://img.shields.io/npm/v/react-7h-hooks.svg?style=flat-square)
 ![https://codecov.io/gh/lijinke666/react-7h-hooks](https://codecov.io/gh/lijinke666/react-7h-hooks/branch/master/graph/badge.svg)
 ![https://app.netlify.com/sites/react-7h-hooks/deploys](https://github.com/lijinke666/react-7h-hooks/workflows/Node%20CI/badge.svg)
 ![https://app.netlify.com/sites/react-7h-hooks/deploys](https://api.netlify.com/api/v1/badges/216fcb8a-7c65-47f1-a1eb-040dbaeb4548/deploy-status)
+
+## 当前版本
+
+![https://www.npmjs.com/package/react-7h-hooks](https://img.shields.io/npm/v/react-7h-hooks.svg?style=flat-square)
 
 ## 安装
 
@@ -50,10 +53,6 @@ const Example = () => {
 
 export default Example
 ```
-
-## 文档
-
-[查看](https://react-7h-hooks.netlify.com/)
 
 ## 推荐
 
