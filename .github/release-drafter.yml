@@ -13,8 +13,11 @@ categories:
   - title: '⚙ Maintenance'
     labels:
       - 'chore'
-      - 'docs'
       - 'refactor'
+  - title: '📚 Documentation'
+    labels:
+      - 'docs'
+      - 'doc'
 change-template: '- $TITLE @$AUTHOR (#$NUMBER)'
 template: |
 
