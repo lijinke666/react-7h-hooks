@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useMemo, useEffect, useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 
@@ -13,7 +14,7 @@ export interface UseSearchParamsSchema {
 
 export interface UseSearchParamsSchemaDetail {
   type: string
-  default: string | Array<any> | number | boolean
+  default: any
 }
 
 export interface UseSearchParamsReturn<T> {
@@ -63,14 +64,14 @@ const useSearchParams = <T extends {}>({
         obj[key] = defaultValue
       }
       return obj
-    }, {})
+    }, {} as UseSearchParamsSchema)
   }, [schema])
 
-  const defaultValues = useMemo(getDefaultValues, [])
+  const defaultValues = useMemo<UseSearchParamsSchema>(getDefaultValues, [])
 
   const setDefaultValues = useCallback(() => {
     Object.keys(defaultValues).forEach(key => {
-      urlSearchParams.set(key, defaultValues[key])
+      urlSearchParams.set(key, defaultValues[key] as string)
     })
   }, [defaultValues])
 
@@ -85,14 +86,14 @@ const useSearchParams = <T extends {}>({
   const set = useCallback(
     (values: Partial<T>) => {
       Object.keys(values).forEach(key => {
-        const value = values[key]
+        const value = ((values as unknown) as UseSearchParamsSchema)[key]
         if (value) {
           if (Array.isArray(value)) {
             value.forEach(v => {
               urlSearchParams.append(key, v)
             })
           } else {
-            urlSearchParams.set(key, (value as unknown) as string)
+            urlSearchParams.set(key, value as string)
           }
         }
       })
@@ -101,28 +102,31 @@ const useSearchParams = <T extends {}>({
     [updateLocation],
   )
 
-  const parseValue = (key: string, value: string) => {
-    const { type } = getFieldByKey(key)
-    let newValue: any
+  const parseValue = useCallback(
+    (key: string, value: string) => {
+      const { type } = getFieldByKey(key)
+      let newValue: any
 
-    switch (type) {
-      case UseSearchParamsSchemaType.STRING:
-        newValue = value !== 'undefined' ? String(value) : ''
-        break
-      case UseSearchParamsSchemaType.NUMBER:
-        newValue = Number(value)
-        break
-      case UseSearchParamsSchemaType.BOOLEAN:
-        newValue = value === 'true'
-        break
-      case UseSearchParamsSchemaType.ARRAY:
-        newValue = urlSearchParams.getAll(key)
-        break
-      default:
-        break
-    }
-    return newValue
-  }
+      switch (type) {
+        case UseSearchParamsSchemaType.STRING:
+          newValue = value !== 'undefined' ? String(value) : ''
+          break
+        case UseSearchParamsSchemaType.NUMBER:
+          newValue = Number(value)
+          break
+        case UseSearchParamsSchemaType.BOOLEAN:
+          newValue = value === 'true'
+          break
+        case UseSearchParamsSchemaType.ARRAY:
+          newValue = urlSearchParams.getAll(key)
+          break
+        default:
+          break
+      }
+      return newValue
+    },
+    [getFieldByKey],
+  )
 
   const deleteMany = useCallback(
     (target: (keyof T)[]) => {
@@ -142,7 +146,7 @@ const useSearchParams = <T extends {}>({
       }
       updateLocation()
     },
-    [history, updateLocation, paramKeys],
+    [updateLocation, paramKeys],
   )
 
   const reset = useCallback(() => {
@@ -152,7 +156,7 @@ const useSearchParams = <T extends {}>({
   }, [setDefaultValues, updateLocation, paramKeys])
 
   const searchParams = useMemo(() => {
-    const parsedSearchParams = {}
+    const parsedSearchParams: UseSearchParamsSchema = {}
     const schemaKeys = Object.keys(schema)
     urlSearchParams.forEach((value, key) => {
       const isValidKey = schemaKeys.includes(key)

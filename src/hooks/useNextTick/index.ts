@@ -14,7 +14,7 @@ const useNextTick = (fn?: UseNextTickParams) => {
       nextTick(fn)
     }
     return () => {}
-  }, [nextTick, fn])
+  }, [fn, nextTick])
 
   return fn ?? nextTick
 }

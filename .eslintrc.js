@@ -39,7 +39,7 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 0,
+    'react-hooks/exhaustive-deps': 'error',
     camelcase: 0,
     'react/jsx-one-expression-per-line': 0,
     'react/prop-types': 0,

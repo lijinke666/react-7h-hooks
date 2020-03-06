@@ -45,7 +45,7 @@ const useList = (
   const onReset = useCallback(() => {
     setList(getList)
     setId(count ?? _DEFAULT_ID_)
-  }, [])
+  }, [count, getList])
 
   const onClear = useCallback(() => {
     setList([])
@@ -70,7 +70,7 @@ const useList = (
       setId(_DEFAULT_ID_)
       setList([])
     }
-  }, [count])
+  }, [count, getList])
 
   return {
     list,

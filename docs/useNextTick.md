@@ -1,6 +1,6 @@
 # useNextTick
 
-对 `useEffect` 和 `event loop microtask(微任务)` 的封装
+对 `useEffect` 和 `event loop micro task(微任务)` 的封装
 
 ## 使用场景
 
@@ -28,7 +28,6 @@ const Example = () => {
 export default Example
 ```
 
-
 ```jsx
 /**
  * title: 手动触发
@@ -54,7 +53,7 @@ export default Example
 
 ## API
 
-```
+```js
 const reTrigger = useNextTick(handler)
 ```
 
@@ -62,4 +61,3 @@ const reTrigger = useNextTick(handler)
 | --------- | ----------------- | ---------- | ------ |
 | handler   | 自定义处理函数    | `Function` | `-`    |
 | reTrigger | 当前handler的句柄 | `Function` | `-`    |
-

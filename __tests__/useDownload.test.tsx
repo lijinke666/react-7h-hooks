@@ -19,4 +19,10 @@ describe('useDownload', () => {
     expect(instance).toHaveProperty('download')
     expect(instance.download).toBeInstanceOf(Function)
   })
+  it('should throw error if not have data', () => {
+    const createInstance = download.result.current
+    expect(() => createInstance({ name: '1' })).toThrowError(
+      new Error('[createDownloadInstance]: invalid data!'),
+    )
+  })
 })
