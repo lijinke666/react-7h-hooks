@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: 10.x
 
-      - name: npm install, build, and test
+      - name: Build And Test
         run: |
           npm install
           npm run lint
@@ -24,25 +24,7 @@ jobs:
           CI: true
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
-      - name: Deploy github pages
-        uses: JamesIves/github-pages-deploy-action@master
-        env:
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: dist
-          BUILD_SCRIPT: npm run build:docs
-
       - name: Release
         uses: release-drafter/release-drafter@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Conventional Changelog Action
-        uses: TriPSs/conventional-changelog-action@v1.3.0
-        with:
-          github-token: ${{ secrets.github_token }}
-          git-message: 'chore(release): {version}'
-          preset: 'angular'
-          tag-prefix: 'v'
-          output-file: 'CHANGELOG.md'
-          changelog-release-count: 0

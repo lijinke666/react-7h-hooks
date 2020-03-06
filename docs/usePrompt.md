@@ -212,6 +212,7 @@ const App = () => {
       <PromptContextProvider>
         {promptValue => (
           <>
+            {JSON.stringify(promptValue)}
             <Example />
             <Modal {...promptValue} onOk={promptValue.onConfirm}>
               {promptValue.description}

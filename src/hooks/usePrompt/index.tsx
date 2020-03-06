@@ -35,7 +35,6 @@ const usePrompt = (defaultPromptTips: PromptTipsProps = _defaultPromptTips) => {
   const [promptTips, setPromptTips] = useState<PromptTipsProps>(
     defaultPromptTips,
   )
-
   const onLocationWillChange = useCallback(
     ({ search, pathname }: Location) => {
       if (isPromptWhenWillLeave) {
@@ -112,8 +111,8 @@ const usePrompt = (defaultPromptTips: PromptTipsProps = _defaultPromptTips) => {
 
   const promptValue = useMemo(() => {
     return {
-      ...promptTips,
       ...defaultPromptTips,
+      ...promptTips,
       visible: confirmModalVisible,
       onConfirm,
       onCancel: onCloseConfirmModal,
