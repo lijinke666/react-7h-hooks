@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.6.1](https://github.com/lijinke666/react-7h-hooks/compare/v0.6.0...v0.6.1) (2020-03-06)
+
+
+### Bug Fixes
+
+* 修复ts定义和文档 ([671104e](https://github.com/lijinke666/react-7h-hooks/commit/671104ecf3edc5e37c0f5a7c030001007950be69))
+* **use-prompt:** 无法设置 prompt tips ([95a6233](https://github.com/lijinke666/react-7h-hooks/commit/95a6233059342ba474959684b868422c17845032))
+
 ## [0.6.0](https://github.com/lijinke666/react-7h-hooks/compare/v0.5.0...v0.6.0) (2020-03-04)
 
 ### Features
