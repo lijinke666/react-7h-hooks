@@ -2,6 +2,44 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## 0.7.0 (2020-03-11)
+
+
+### Features
+
+* add promptProvider ([9d10d64](https://github.com/lijinke666/react-7h-hooks/commit/9d10d64910d66630724d7b563c696dd1aa7e4833))
+* add useNextTick hooks ([0ce46d2](https://github.com/lijinke666/react-7h-hooks/commit/0ce46d29f6486bc8256b8dfbfb73b15009993050))
+* **use-trim-input:** 增加测试 ([72c6316](https://github.com/lijinke666/react-7h-hooks/commit/72c63169b427869298d3c47b9ff61414a07428c1))
+* add usePrompt hook ([2e3308c](https://github.com/lijinke666/react-7h-hooks/commit/2e3308c3ee1e3f9e9388620a160295fdb8bbd4d3))
+* **prompt:** add createPromptContextProvider ([69bdbd7](https://github.com/lijinke666/react-7h-hooks/commit/69bdbd7b799c66f1b3a7d228d9d404d38a3ea71a))
+* **prompt:** add usePrompt hooks ([c78c8e8](https://github.com/lijinke666/react-7h-hooks/commit/c78c8e89c8205c6aa495bf18e17b74f4517b3c8f))
+* **use-count:** 新增 useCount 测试 ([e50a825](https://github.com/lijinke666/react-7h-hooks/commit/e50a82598681b7f8d5e41ed6a149375cc804403b))
+* **use-count:** 新增 useCount 计数器 ([b5e673c](https://github.com/lijinke666/react-7h-hooks/commit/b5e673c9888b9ede4ecbe9dbbfaae5425d2241a9))
+* **use-download:** 增加 useDownload 测试 ([0aae5a4](https://github.com/lijinke666/react-7h-hooks/commit/0aae5a4051c2877680b8c0e3eba9be43708bef42))
+* **use-download:** 新增 useDownload hook ([a2d5832](https://github.com/lijinke666/react-7h-hooks/commit/a2d58325815965077a8e0dbea0f740f9b10afceb))
+* **use-list:** 新增 onClear 方法 ([772f14a](https://github.com/lijinke666/react-7h-hooks/commit/772f14ad1c560254c7a61932dcb70dfcd8232334))
+* **use-list:** 新增 useList hook ([ec4bd64](https://github.com/lijinke666/react-7h-hooks/commit/ec4bd64282d54ce20ba64ee6f89a6434d7da2271))
+* **use-prompt:** optimize usePrompt test ([a5a2962](https://github.com/lijinke666/react-7h-hooks/commit/a5a2962f008cf37361a5ab908eaad3c985840326))
+* **use-search-params:** 增加 reset 方法 ([d658b80](https://github.com/lijinke666/react-7h-hooks/commit/d658b80397d8fbe61ab6d6b09661449e0d172d73))
+* **use-search-params:** 支持 array 类型 ([a8d014c](https://github.com/lijinke666/react-7h-hooks/commit/a8d014cdcfb62b5c3e59392099cd3448f4bd34dd))
+* **use-search-params:** 新增搜索参数与数据的联动hook [待优化] ([98a9cb8](https://github.com/lijinke666/react-7h-hooks/commit/98a9cb8600a20f5374b7548fea2bec8d226d366d))
+* **use-search-params:** 新增测试 ([4bbebe6](https://github.com/lijinke666/react-7h-hooks/commit/4bbebe6eaea3e8c8deddad93f3918d0836de258a))
+* **use-trim-input:** 完善 useTrimInput ([9b68871](https://github.com/lijinke666/react-7h-hooks/commit/9b68871ed8fe345d1df5d1263ea3deea84738dde))
+* **use-trim-input:** 新增 useTrimInput ([fc083f4](https://github.com/lijinke666/react-7h-hooks/commit/fc083f4bb46f3077581efac45849f7233fc9ea3b))
+
+
+### Bug Fixes
+
+* build dir ([82388b9](https://github.com/lijinke666/react-7h-hooks/commit/82388b9fd234f4c9ad058419d06be47caccbad42))
+* 修复 dependencies 相关依赖 ([9c7ae24](https://github.com/lijinke666/react-7h-hooks/commit/9c7ae245d4552a75135ae956fe99511d555f6e2e))
+* **use-list:** 修复 useList onRemove 的类型定义 ([879944e](https://github.com/lijinke666/react-7h-hooks/commit/879944e01e2a2c6e8601e57bac646d37aff7dc50))
+* **use-next-tick:** 使用 Promise 替代 setTimeout ([cbea113](https://github.com/lijinke666/react-7h-hooks/commit/cbea113d1690a8506b4c08a3a8534230c3ba6f6d))
+* **use-prompt:** 修复promptTips 默认参数无效的问题 ([9142e61](https://github.com/lijinke666/react-7h-hooks/commit/9142e617b26fee78f0a6526215fc111d4c7c2b8e))
+* 修复 github CI ([751eb9b](https://github.com/lijinke666/react-7h-hooks/commit/751eb9b79be56672d8f27c63bb8c4d70f6a5116b))
+* 修复ts定义和文档 ([35a8787](https://github.com/lijinke666/react-7h-hooks/commit/35a87871386845653ce53b0befa39e6442e0ef6c))
+* **use-prompt:** 无法设置 prompt tips ([1e5f844](https://github.com/lijinke666/react-7h-hooks/commit/1e5f8442f202e56d0054f12ed3bb766f8c728290))
+* **use-search-params:** 修复重置和删除全部无效的问题 ([ee7bfc8](https://github.com/lijinke666/react-7h-hooks/commit/ee7bfc85c2e9c2f5ba0c86fb504c2edaf3766ee4))
+
 ### [0.6.1](https://github.com/lijinke666/react-7h-hooks/compare/v0.6.0...v0.6.1) (2020-03-06)
 
 
