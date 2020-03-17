@@ -24,6 +24,7 @@ react-7h-hooks
   <a href="https://codecov.io/gh/lijinke666/react-7h-hooks">
     <img src="https://codecov.io/gh/lijinke666/react-7h-hooks/branch/master/graph/badge.svg" />
   </a>
+  <a href="https://lgtm.com/projects/g/lijinke666/react-7h-hooks/context:javascript"><img alt="Language grade: JavaScript" src="https://img.shields.io/lgtm/grade/javascript/g/lijinke666/react-7h-hooks.svg?logo=lgtm&logoWidth=18"/></a>
     <a href="https://app.netlify.com/sites/react-7h-hooks/deploys">
     <img src="https://github.com/lijinke666/react-7h-hooks/workflows/Node%20CI/badge.svg" />
   </a>

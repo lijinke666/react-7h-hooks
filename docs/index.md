@@ -7,6 +7,7 @@
 ![https://www.npmjs.com/package/react-7h-hooks](https://img.shields.io/npm/dm/react-7h-hooks.svg?style=flat-square)
 ![https://www.npmjs.com/package/react-7h-hooks](https://img.shields.io/npm/l/react-7h-hooks.svg?style=flat-square)
 ![https://codecov.io/gh/lijinke666/react-7h-hooks](https://codecov.io/gh/lijinke666/react-7h-hooks/branch/master/graph/badge.svg)
+![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/lijinke666/react-7h-hooks.svg?logo=lgtm&logoWidth=18)
 ![https://app.netlify.com/sites/react-7h-hooks/deploys](https://github.com/lijinke666/react-7h-hooks/workflows/Node%20CI/badge.svg)
 ![https://app.netlify.com/sites/react-7h-hooks/deploys](https://api.netlify.com/api/v1/badges/216fcb8a-7c65-47f1-a1eb-040dbaeb4548/deploy-status)
 

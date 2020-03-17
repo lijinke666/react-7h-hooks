@@ -63,16 +63,21 @@ const App = () => {
       default: 1,
     },
   }
-  const { searchParams, set, remove } = useSearchParams({
+  const { searchParams, set, remove, reset } = useSearchParams({
     schema,
   })
   console.log('searchParams: ', searchParams)
   return (
     <>
       <pre>{JSON.stringify(searchParams, undefined, 2)}</pre>
-      <Button type="primary" onClick={() => remove(['page'])}>
-        移除page属性
-      </Button>
+      <div style={{margin: '10px 0'}}>
+        <Button type="primary" onClick={() => remove(['page'])} style={{marginRight: 10}}>
+          移除page属性
+        </Button>
+        <Button type="dashed" onClick={() => reset()}>
+          重置page属性
+        </Button>
+      </div>
       <Table
         columns={columns}
         dataSource={dataSource}

@@ -22,13 +22,17 @@ const Example = () => {
   const { list, onAdd, onRemove, onReset, onGetTitle, onClear } = useList({
     title: '表单',
   })
+  const layout = {
+    labelCol: { span: 2 },
+    wrapperCol: { span: 16 },
+  };
   return (
-    <>
+    <Form {...layout}>
       {list.map(id => {
         return (
           <Form.Item label={onGetTitle(id)} key={id}>
             <Input />
-            <Button type="dashed" onClick={() => onRemove(id)}>
+            <Button type="dashed" onClick={() => onRemove(id)} style={{marginTop: 10}}>
               <Icon type="plus" /> 删除
             </Button>
           </Form.Item>
@@ -47,7 +51,7 @@ const Example = () => {
           </Button>
         </>
       )}
-    </>
+    </Form>
   )
 }
 
@@ -68,13 +72,17 @@ const Example = () => {
     title: '表单',
     count: 2,
   })
+  const layout = {
+    labelCol: { span: 2 },
+    wrapperCol: { span: 16 },
+  };
   return (
-    <>
+    <Form {...layout}>
       {list.map(id => {
         return (
           <Form.Item label={onGetTitle(id)} key={id}>
             <Input />
-            <Button type="dashed" onClick={() => onRemove(id)}>
+            <Button type="dashed" onClick={() => onRemove(id)} style={{marginTop: 10}}>
               <Icon type="plus" /> 删除
             </Button>
           </Form.Item>
@@ -93,7 +101,7 @@ const Example = () => {
           </Button>
         </>
       )}
-    </>
+    </Form>
   )
 }
 
