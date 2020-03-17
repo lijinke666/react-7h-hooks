@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.8.0](https://github.com/lijinke666/react-7h-hooks/compare/v0.7.0...v0.8.0) (2020-03-17)
+
+
+### Features
+
+* **use-list:** 新增动态标题功能 ([701b55c](https://github.com/lijinke666/react-7h-hooks/commit/701b55cd609ed4d9592bf94ea6f325afd0152c7a))
+* 新增 umd 模块支持 ([45df2a9](https://github.com/lijinke666/react-7h-hooks/commit/45df2a9726ae7163492dc85f40ed89aeb1b9ec1f))
+
 ## 0.7.0 (2020-03-11)
 
 
