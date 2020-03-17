@@ -1,78 +1,117 @@
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef } from 'react'
+import { uuid } from '../../utils/uuid'
+import { isFunction } from '../../utils/function'
 
-// TODO: 支持标题序列化 eg. 表单 1 表单 2
-const _DEFAULT_ID_ = 0
-
-export interface UseList {
-  title?: string | React.ReactNode | ((id: number) => string | React.ReactNode)
+export interface UseListOptions {
+  title?: string | React.ReactNode | FunctionTitle
   count?: number
+  rememberIndex?: boolean
 }
 
+export type FunctionTitle = (
+  id: string,
+  index: number,
+) => string | React.ReactNode
+
 export interface UseListReturn {
-  list: number[]
+  list: string[]
+  idIndexMapper: Map<string, number>
   onAdd: () => void
-  onRemove: (id: number) => void
+  onRemove: (id: string) => void
   onReset: () => void
   onClear: () => void
-  onGetTitle: (id?: number) => string | React.ReactNode
+  onGetTitle: (id?: string, index?: number) => string | React.ReactNode
 }
 
 const useList = (
-  { title, count }: UseList = { title: '', count: 0 },
+  { title, count, rememberIndex }: UseListOptions = {
+    title: '',
+    count: 0,
+    rememberIndex: false,
+  },
 ): UseListReturn => {
-  const [id, setId] = useState<number>(_DEFAULT_ID_)
-  const [list, setList] = useState<number[]>([])
+  const [list, setList] = useState<string[]>([])
+  const idIndexMapper = useRef<UseListReturn['idIndexMapper']>(new Map())
+
+  const setNextIdIndexMapper = useCallback<(id: string) => void>(
+    id => {
+      const lastId = Array.from(idIndexMapper.current.keys())[
+        idIndexMapper.current.size - 1
+      ]
+      const lastIndex = idIndexMapper.current.get(lastId) || 0
+      const nextIndex = list.length === 0 ? 0 : lastIndex + 1
+      idIndexMapper.current.set(id, nextIndex)
+    },
+    [list.length],
+  )
 
   const onAdd = useCallback(() => {
-    setId(id + 1)
+    const id = uuid()
+    setNextIdIndexMapper(id)
     setList([...list, id])
-  }, [list, id])
+  }, [list, setNextIdIndexMapper])
 
   const onRemove = useCallback(
-    (currentListId: number) => {
+    (currentListId: string) => {
       setList(list.filter(listId => listId !== currentListId))
+      idIndexMapper.current.delete(currentListId)
     },
     [list],
   )
 
+  const clearIdIndexMapper = useCallback(() => {
+    idIndexMapper.current.clear()
+  }, [])
+
   const getList = useCallback(() => {
+    clearIdIndexMapper()
     if (!count) {
       return []
     }
-    return Array.from({ length: count }, (_, i) => i)
-  }, [count])
+    return Array.from({ length: count }, (_, i) => {
+      const id = uuid()
+      idIndexMapper.current.set(id, i)
+      return id
+    })
+  }, [count, clearIdIndexMapper])
 
   const onReset = useCallback(() => {
     setList(getList)
-    setId(count ?? _DEFAULT_ID_)
-  }, [count, getList])
+  }, [getList])
 
   const onClear = useCallback(() => {
     setList([])
-    setId(_DEFAULT_ID_)
   }, [])
 
+  const getCurrentIndex = useCallback<(id: string, index: number) => number>(
+    (id, index) => {
+      if (rememberIndex) {
+        return idIndexMapper.current.get(id) || 0
+      }
+      return index
+    },
+    [rememberIndex],
+  )
+
   const onGetTitle = useCallback(
-    currentId => {
-      if (typeof title === 'function') {
-        return title(currentId)
+    (currentId, index) => {
+      if (isFunction(title)) {
+        return (title as FunctionTitle)(
+          currentId,
+          getCurrentIndex(currentId, index),
+        )
       }
       return title
     },
-    [title],
+    [getCurrentIndex, title],
   )
 
   useEffect(() => {
-    if (count) {
-      setId(count)
-      setList(getList())
-    } else {
-      setId(_DEFAULT_ID_)
-      setList([])
-    }
+    setList(getList())
   }, [count, getList])
 
   return {
+    idIndexMapper: idIndexMapper.current,
     list,
     onAdd,
     onRemove,

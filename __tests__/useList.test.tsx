@@ -29,15 +29,17 @@ describe('useList', () => {
     const { result } = renderHook(() =>
       useList({ count: 2, title: id => `测试-${id}` }),
     )
-    expect(result.current.onGetTitle(1)).toEqual('测试-1')
-    expect(result.current.onGetTitle(2)).toEqual('测试-2')
+    const ids = result.current.list
+
+    expect(result.current.onGetTitle(ids[0])).toEqual(`测试-${ids[0]}`)
+    expect(result.current.onGetTitle(ids[1])).toEqual(`测试-${ids[1]}`)
   })
 
-  it.skip('should remove list when call onRemove', () => {
+  it('should remove list when call onRemove', () => {
     const { result } = renderHook(() => useList({ count: 2 }))
 
     act(() => {
-      result.current.onRemove(1)
+      result.current.onRemove(result.current.list[0])
     })
     expect(result.current.list).toHaveLength(1)
   })
@@ -72,5 +74,26 @@ describe('useList', () => {
       result.current.onClear()
     })
     expect(result.current.list).toHaveLength(0)
+  })
+
+  it('should get id index mapper', () => {
+    const { result } = renderHook(() => useList({ count: 2 }))
+    const mapper = result.current.idIndexMapper
+    expect(typeof mapper).toEqual('object')
+    expect(Array.from(mapper.values())).toEqual([0, 1])
+  })
+
+  it('should remember index', () => {
+    const { result } = renderHook(() =>
+      useList({ count: 2, rememberIndex: true }),
+    )
+    act(() => {
+      result.current.onAdd()
+    })
+    act(() => {
+      const id = Array.from(result.current.idIndexMapper.keys())[1]
+      result.current.onRemove(id)
+    })
+    expect(Array.from(result.current.idIndexMapper.values())).toEqual([0, 2])
   })
 })
