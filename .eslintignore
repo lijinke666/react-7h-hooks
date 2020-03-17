@@ -8,3 +8,5 @@ yarn.lock
 stories
 .docz
 dist
+lib
+es

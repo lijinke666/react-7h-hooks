@@ -5,6 +5,7 @@ export default {
   description: pkg.description,
   favicon: '//cdn.lijinke.cn/7h-hook.png',
   logo: '//cdn.lijinke.cn/7h-hook.png',
+  outputPath: '_docs',
   resolve: {
     includes: ['docs', 'src'],
   },

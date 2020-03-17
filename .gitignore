@@ -7,6 +7,7 @@ yarn-error.log*
 .vscode
 .docz
 dist
+_docs
 src/.umi
 
 # Runtime data
