@@ -1,5 +1,6 @@
 import { renderHook } from '@testing-library/react-hooks'
 import { useDownload } from '../src'
+import { createBlobUrl, getLinkUrl } from '../src/hooks/useDownload'
 
 describe('useDownload', () => {
   let download
@@ -24,5 +25,15 @@ describe('useDownload', () => {
     expect(() => createInstance({ name: '1' })).toThrowError(
       new Error('[createDownloadInstance]: invalid data!'),
     )
+  })
+
+  it('should create url when type is text', () => {
+    expect(createBlobUrl('1', 'text')).toEqual((global as any).__MOCK_URL__)
+  })
+  it('should create url when type is json', () => {
+    expect(createBlobUrl('1', 'json')).toEqual((global as any).__MOCK_URL__)
+  })
+  it('should create url when type is url', () => {
+    expect(getLinkUrl('url')).not.toEqual(null)
   })
 })

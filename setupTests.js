@@ -1,7 +1,8 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import Enzyme from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 
-const { JSDOM } = require('jsdom')
+import { JSDOM } from 'jsdom'
 
 const jsdom = new JSDOM('<!doctype html><html><body></body></html>')
 const { window } = jsdom
@@ -23,6 +24,11 @@ global.requestAnimationFrame = function(callback) {
 }
 global.cancelAnimationFrame = function(id) {
   clearTimeout(id)
+}
+global.__MOCK_URL__ = '__MOCK_URL__'
+global.URL.createObjectURL = jest.fn(() => global.__MOCK_URL__)
+global.fetch = () => {
+  return new Promise(resolve => resolve({ blob: jest.fn(() => true) }))
 }
 copyProps(window, global)
 

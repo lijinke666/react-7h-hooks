@@ -1,41 +1,41 @@
 import { useCallback } from 'react'
 import { UseDownloadFileType, UseDownloadOptions } from './index.interface'
 
-const getTextUrl = (data: string) => {
+export const getTextUrl = (data: string) => {
   const blob = new Blob([`\ufeff${data}`], {
     type: 'charset=UTF-8',
   })
   return URL.createObjectURL(blob)
 }
 
-const getJSONUrl = (data: object) => {
+export const getJSONUrl = (data: object) => {
   const blob = new Blob([`\ufeff${JSON.stringify(data, undefined, 2)}`], {
     type: 'application/json,charset=UTF-8',
   })
   return URL.createObjectURL(blob)
 }
 
-const getLinkUrl = async (src: string) => {
+export const getLinkUrl = async (src: string) => {
   const data = await fetch(src).then(res => res.blob())
   return URL.createObjectURL(data)
 }
 
-const useDownload = () => {
-  const createBlobUrl = useCallback((data: any, type?: UseDownloadFileType) => {
-    let url = ''
-    switch (type) {
-      case 'text':
-        url = getTextUrl(data)
-        break
-      case 'json':
-        url = getJSONUrl(data)
-        break
-      default:
-        break
-    }
-    return url
-  }, [])
+export const createBlobUrl = (data: any, type?: UseDownloadFileType) => {
+  let url = ''
+  switch (type) {
+    case 'text':
+      url = getTextUrl(data)
+      break
+    case 'json':
+      url = getJSONUrl(data)
+      break
+    default:
+      break
+  }
+  return url
+}
 
+const useDownload = () => {
   const createDownloadInstance = useCallback(
     ({ data, name, type }: UseDownloadOptions): { download: () => void } => {
       if (!data) {
@@ -61,7 +61,7 @@ const useDownload = () => {
         },
       }
     },
-    [createBlobUrl],
+    [],
   )
 
   return createDownloadInstance
