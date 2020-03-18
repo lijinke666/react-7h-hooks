@@ -1,27 +1,7 @@
 import { useState, useCallback, useEffect, useRef } from 'react'
 import { uuid } from '../../utils/uuid'
 import { isFunction } from '../../utils/function'
-
-export interface UseListOptions {
-  title?: string | React.ReactNode | FunctionTitle
-  count?: number
-  rememberIndex?: boolean
-}
-
-export type FunctionTitle = (
-  id: string,
-  index: number,
-) => string | React.ReactNode
-
-export interface UseListReturn {
-  list: string[]
-  idIndexMapper: Map<string, number>
-  onAdd: () => void
-  onRemove: (id: string) => void
-  onReset: () => void
-  onClear: () => void
-  onGetTitle: (id?: string, index?: number) => string | React.ReactNode
-}
+import { UseListOptions, FunctionTitle } from './index.interface'
 
 const useList = (
   { title, count, rememberIndex }: UseListOptions = {
@@ -29,9 +9,9 @@ const useList = (
     count: 0,
     rememberIndex: false,
   },
-): UseListReturn => {
+) => {
   const [list, setList] = useState<string[]>([])
-  const idIndexMapper = useRef<UseListReturn['idIndexMapper']>(new Map())
+  const idIndexMapper = useRef<Map<string, number>>(new Map())
 
   const setNextIdIndexMapper = useCallback<(id: string) => void>(
     id => {

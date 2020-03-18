@@ -1,13 +1,13 @@
 import React from 'react'
 import { Prompt } from 'react-router-dom'
-import PromptContext, { PromptValueProps, PromptTipsProps } from './prompt'
+import PromptContext, { PromptValueOptions, PromptTipsOptions } from './prompt'
 import usePrompt from '../hooks/usePrompt'
 
 interface Props {
-  children: (promptValue?: PromptValueProps) => React.ReactNode
+  children: (promptValue?: PromptValueOptions) => React.ReactNode
 }
 
-const createPromptContextProvider = (promptTips?: PromptTipsProps) => (
+const createPromptContextProvider = (promptTips?: PromptTipsOptions) => (
   props: Props,
 ) => {
   const {

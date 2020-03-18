@@ -1,16 +1,5 @@
 import { useCallback } from 'react'
-
-type UseDownloadFileType = 'text' | 'json' | 'url'
-
-export interface UseDownloadParams {
-  name: string
-  data: any
-  type?: UseDownloadFileType
-}
-
-export type UseDownloadReturn = (
-  params: UseDownloadParams,
-) => { download: () => void }
+import { UseDownloadFileType, UseDownloadOptions } from './index.interface'
 
 const getTextUrl = (data: string) => {
   const blob = new Blob([`\ufeff${data}`], {
@@ -48,7 +37,7 @@ const useDownload = () => {
   }, [])
 
   const createDownloadInstance = useCallback(
-    ({ data, name, type }: UseDownloadParams): { download: () => void } => {
+    ({ data, name, type }: UseDownloadOptions): { download: () => void } => {
       if (!data) {
         throw new Error('[createDownloadInstance]: invalid data!')
       }

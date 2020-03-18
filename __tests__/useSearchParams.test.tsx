@@ -1,6 +1,5 @@
 import { renderHook, act } from '@testing-library/react-hooks'
-import { useSearchParams } from '../src'
-import { UseSearchParamsSchemaType } from '../src/hooks/useSearchParams'
+import { useSearchParams, UseSearchParamsSchemaType } from '../src'
 import { routerWrapper } from './router'
 
 describe('useSearchParams', () => {

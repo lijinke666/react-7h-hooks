@@ -18,8 +18,7 @@ import React from 'react'
 import { Router } from 'react-router-dom'
 import { Table, Button } from 'antd'
 import { createBrowserHistory } from 'history'
-import { useSearchParams } from 'react-7h-hooks'
-import { UseSearchParamsSchemaType } from '../src/hooks/useSearchParams'
+import { useSearchParams, UseSearchParamsSchemaType } from 'react-7h-hooks'
 
 const history = createBrowserHistory()
 
@@ -112,8 +111,7 @@ import React from 'react'
 import { Router, useLocation } from 'react-router-dom'
 import { Button } from 'antd'
 import { createBrowserHistory } from 'history'
-import { useSearchParams } from 'react-7h-hooks'
-import { UseSearchParamsSchemaType } from '../src/hooks/useSearchParams'
+import { useSearchParams, UseSearchParamsSchemaType } from 'react-7h-hooks'
 
 const history = createBrowserHistory()
 

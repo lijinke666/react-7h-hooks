@@ -1,10 +1,6 @@
 import { useState, useCallback, useMemo } from 'react'
 import { trim } from '../../utils/string'
-
-export type UseTrimInputReturn = [
-  string,
-  (event: React.ChangeEvent<HTMLInputElement>) => void,
-]
+import { UseTrimInputReturn } from './index.interface'
 
 const useTrimInput = (fullTrim: boolean = false): UseTrimInputReturn => {
   const [value, setValue] = useState<string>('')
@@ -15,7 +11,7 @@ const useTrimInput = (fullTrim: boolean = false): UseTrimInputReturn => {
     [setValue],
   )
 
-  const trimValue: string = useMemo(() => {
+  const trimValue = useMemo<string>(() => {
     return trim(value, fullTrim)
   }, [value, fullTrim])
 

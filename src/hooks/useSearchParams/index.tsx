@@ -1,40 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useMemo, useEffect, useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
-
-export interface UseSearchParamsParams {
-  schema: UseSearchParamsSchema
-  pathname?: string
-}
-
-// like mongoose
-export interface UseSearchParamsSchema {
-  [key: string]: UseSearchParamsSchemaDetail | string
-}
-
-export interface UseSearchParamsSchemaDetail {
-  type: string
-  default: any
-}
-
-export interface UseSearchParamsReturn<T> {
-  searchParams: T
-  remove: (keys?: Array<keyof T>) => void
-  reset: () => void
-  set: (values: Partial<T>) => void
-}
-
-export enum UseSearchParamsSchemaType {
-  STRING = 'STRING',
-  NUMBER = 'NUMBER',
-  ARRAY = 'ARRAY',
-  BOOLEAN = 'BOOLEAN',
-}
+import {
+  UseSearchParamsOptions,
+  UseSearchParamsReturn,
+  UseSearchParamsSchemaDetail,
+  UseSearchParamsSchema,
+  UseSearchParamsSchemaType,
+} from './index.interface'
 
 const useSearchParams = <T extends {}>({
   schema,
   pathname: _pathname,
-}: UseSearchParamsParams): UseSearchParamsReturn<T> => {
+}: UseSearchParamsOptions): UseSearchParamsReturn<T> => {
   const history = useHistory()
   const location = useLocation()
   const [paramKeys, setParamKeys] = useState<(keyof T)[]>([])

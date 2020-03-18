@@ -1,9 +1,8 @@
 import { useCallback, useEffect } from 'react'
+import { UseNextTickOptions } from './index.interface'
 
-type UseNextTickParams = (handler?: () => void) => void
-
-const useNextTick = (fn?: UseNextTickParams) => {
-  const nextTick = useCallback((handler?: UseNextTickParams) => {
+const useNextTick = (fn?: UseNextTickOptions) => {
+  const nextTick = useCallback((handler?: UseNextTickOptions) => {
     if (handler) {
       Promise.resolve().then(() => handler())
     }
