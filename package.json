@@ -1,7 +1,6 @@
 {
   "name": "react-7h-hooks",
   "version": "0.8.0",
-  "main": "index.js",
   "description": "每天只工作7小时!",
   "repository": "https://github.com/lijinke666/react-7h-hooks.git",
   "bugs": {
@@ -11,9 +10,9 @@
   "author": "Jinke.Li <1359518268@qq.com>",
   "license": "MIT",
   "files": [
-    "lib/",
-    "es/",
-    "dist/"
+    "lib",
+    "es",
+    "dist"
   ],
   "keywords": [
     "react",
@@ -23,6 +22,8 @@
   "sideEffects": [
     "dist/*"
   ],
+  "main": "lib/index.js",
+  "module": "es/index.js",
   "unpkg": "dist/react-7h-hooks.min.js",
   "types": "lib/index.d.ts",
   "typings": "lib/index.d.ts",
