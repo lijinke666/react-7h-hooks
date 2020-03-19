@@ -3,7 +3,8 @@ import { renderHook, act } from '@testing-library/react-hooks'
 import { shallow } from 'enzyme'
 import { Prompt } from 'react-router-dom'
 import { usePrompt, createPromptContextProvider } from '../src'
-import { routerWrapper } from './router'
+import { RouterWrapper } from './router'
+import { _defaultPromptTips } from '../src/hooks/usePrompt'
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -14,6 +15,7 @@ jest.mock('react-router-dom', () => ({
 
 describe('usePrompt', () => {
   let prompt
+  let defaultTipPrompt
   beforeAll(() => {
     prompt = renderHook(
       () =>
@@ -24,14 +26,18 @@ describe('usePrompt', () => {
           cancelText: 'cancel',
         }),
       {
-        wrapper: routerWrapper,
+        wrapper: RouterWrapper,
       },
     )
+    defaultTipPrompt = renderHook(() => usePrompt(), {
+      wrapper: RouterWrapper,
+    })
   })
   it('should be defined', () => {
     expect(usePrompt).toBeDefined()
+    expect(defaultTipPrompt).toBeDefined()
   })
-  it('should set prompt tips form usePrompt default config', () => {
+  it('should get custom prompt tips', () => {
     const { promptValue } = prompt.result.current
     expect({
       title: promptValue.title,
@@ -84,5 +90,15 @@ describe('usePrompt', () => {
 
     expect(isPromptWhenWillLeave).toEqual(true)
     expect(promptValue.visible).toEqual(false)
+  })
+
+  it('should get default prompt tips', () => {
+    const { promptValue } = defaultTipPrompt.result.current
+    expect({
+      title: promptValue.title,
+      description: promptValue.description,
+      okText: promptValue.okText,
+      cancelText: promptValue.cancelText,
+    }).toStrictEqual(_defaultPromptTips)
   })
 })

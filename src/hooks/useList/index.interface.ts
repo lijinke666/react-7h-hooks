@@ -4,6 +4,6 @@ export interface UseListOptions {
   rememberIndex?: boolean
 }
 export type FunctionTitle = (
-  id: string,
-  index: number,
+  id?: string,
+  index?: number,
 ) => string | React.ReactNode

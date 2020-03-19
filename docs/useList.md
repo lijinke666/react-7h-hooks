@@ -120,11 +120,10 @@ import { useList } from 'react-7h-hooks'
 const Example = () => {
   const { list, onAdd, onRemove, onReset, onGetTitle, onClear } = useList({
     title: (currentId, index) => {
-      console.log('index: ', index);
-      console.log('currentId: ', currentId);
       return `表单${index + 1}`
     },
-    rememberIndex: true
+    rememberIndex: true,
+    count: 3
   })
   const layout = {
     labelCol: { span: 3 },
@@ -220,20 +219,20 @@ export default Example
 const { list, onAdd, onRemove, onReset, onClear, onGetTitle, idIndexMapper } = useList(options)
 ```
 
-| 属性                  | 说明                                       | 类型                                                                         | 默认值  |
-| --------------------- | ------------------------------------------ | ---------------------------------------------------------------------------- | ------- |
-| options.title         | 每一项表单的名字, 支持一个函数自定义格式化 | `string` \| `React.ReactNode` \| `(id: number) => string \| React.ReactNode` | `-`     |
-| options.count         | 默认生成的列表个数                         | `number`                                                                     | `0`     |
-| options.rememberIndex | 新增一项时是否记住上一次的index            | `boolean`                                                                    | `false` |
+| 属性                  | 说明                                       | 类型                                                                                        | 默认值  |
+| --------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------- | ------- |
+| options.title         | 每一项表单的名字, 支持一个函数自定义格式化 | `string` \| `React.ReactNode` \| `(id: string, index: number) => string \| React.ReactNode` | `-`     |
+| options.count         | 默认生成的列表个数                         | `number`                                                                                    | `0`     |
+| options.rememberIndex | 新增一项时是否记住上一次的index            | `boolean`                                                                                   | `false` |
 
 ## 返回值说明
 
 | 属性          | 说明                                       | 类型                                         | 默认值 |
 | ------------- | ------------------------------------------ | -------------------------------------------- | ------ |
-| list          | 一个自增 id 组成的数组, 用它来渲染你的表单 | `number[]`                                   | `-`    |
+| list          | 一个自增 id 组成的数组, 用它来渲染你的表单 | `string[]`                                   | `-`    |
 | onAdd         | 没调用一次, list 新增一条记录              | `()=> void`                                  | `-`    |
-| onRemove      | 删除 list 对应 id 的记录                   | `( id: number)=> void`                       | `-`    |
+| onRemove      | 删除 list 对应 id 的记录                   | `( id: string)=> void`                       | `-`    |
 | onRest        | 重置 list 为初始状态                       | `()=> void`                                  | `-`    |
 | onClear       | 清空 list                                  | `()=> void`                                  | `-`    |
-| onGetTitle    | 获取 id 对应的标题                         | `( id: number) => string \| React.ReactNode` | `-`    |
-| idIndexMapper | id 和 index 对应的 map                     | `Map<string, number>`                        | `-`    |
+| onGetTitle    | 获取 id 对应的标题                         | `( id: string) => string \| React.ReactNode` | `-`    |
+| idIndexMapper | id 和 index 对应的 map                     | `Map<id: string, index: number>`             | `-`    |

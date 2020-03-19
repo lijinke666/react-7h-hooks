@@ -43,7 +43,7 @@ const useList = (
     idIndexMapper.current.clear()
   }, [])
 
-  const getList = useCallback(() => {
+  const getList = useCallback<() => string[]>(() => {
     clearIdIndexMapper()
     if (!count) {
       return []
@@ -74,8 +74,8 @@ const useList = (
   )
 
   const onGetTitle = useCallback(
-    (currentId, index) => {
-      if (isFunction(title)) {
+    (currentId?: string, index: number = 0) => {
+      if (isFunction(title) && currentId) {
         return (title as FunctionTitle)(
           currentId,
           getCurrentIndex(currentId, index),

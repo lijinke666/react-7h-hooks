@@ -7,7 +7,7 @@ import PromptContext, {
   PromptContextOptions,
 } from '../../context/prompt'
 
-const _defaultPromptTips: PromptTipsOptions = {
+export const _defaultPromptTips: PromptTipsOptions = {
   title: '确认离开?',
   description: '离开不保留任何数据',
   okText: '确认',

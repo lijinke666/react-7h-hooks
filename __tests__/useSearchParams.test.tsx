@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react-hooks'
 import { useSearchParams, UseSearchParamsSchemaType } from '../src'
-import { routerWrapper } from './router'
+import { RouterWrapper } from './router'
 
 describe('useSearchParams', () => {
   const schema = {
@@ -25,7 +25,7 @@ describe('useSearchParams', () => {
           schema,
         }),
       {
-        wrapper: routerWrapper,
+        wrapper: RouterWrapper,
         initialProps: {
           search: '',
         },

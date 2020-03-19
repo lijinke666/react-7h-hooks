@@ -4,6 +4,6 @@ import { createMemoryHistory } from 'history'
 
 const history = createMemoryHistory()
 
-export const routerWrapper = ({ children }: { children?: React.ReactNode }) => {
+export const RouterWrapper = ({ children }: { children?: React.ReactNode }) => {
   return <Router history={history}>{children}</Router>
 }
