@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.1](https://github.com/lijinke666/react-7h-hooks/compare/v0.8.0...v0.8.1) (2020-03-19)
+
+
+### Features
+
+* 增加useDownload 测试 ([7811dcd](https://github.com/lijinke666/react-7h-hooks/commit/7811dcd4b4c7ff6f693d9ceef4ee4d8cad9ced48))
+
+
+### Bug Fixes
+
+* 修复npm包文件缺失 ([fb1c83c](https://github.com/lijinke666/react-7h-hooks/commit/fb1c83ca248011fa46308d8143ec043c5e386218))
+
 ## [0.8.0](https://github.com/lijinke666/react-7h-hooks/compare/v0.7.0...v0.8.0) (2020-03-17)
 
 
