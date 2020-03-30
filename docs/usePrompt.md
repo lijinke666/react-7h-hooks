@@ -15,7 +15,7 @@
 import React from 'react'
 import { Router } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
-import { createPromptContextProvider } from '../src'
+import { createPromptContextProvider } from 'react-7h-hooks'
 
 const App = () => {
   const history = createBrowserHistory()
@@ -60,6 +60,7 @@ const Example = () => {
   const { setPromptWhenWillLeave } = usePrompt()
 
   useEffect(() => {
+    // 设置提醒
     setPromptWhenWillLeave({
       prompt: true,
     })
@@ -110,18 +111,21 @@ const Example = () => {
   } = usePrompt()
 
   useEffect(() => {
+    // 如果点击了取消, 设置为非编辑状态
     if (isConfirmToLeaveFromCancelAction) {
       setEdit(false)
     }
   }, [isConfirmToLeaveFromCancelAction])
 
   useEffect(() => {
+    // 如果是编辑, 那么就设置提醒
     setPromptWhenWillLeave({
       prompt: edit,
     })
   }, [edit, setPromptWhenWillLeave])
 
   const onCancelEdit = useCallback(() => {
+    // 表示是从页面某一个按钮触发的
     setPromptWhenWillLeave({
       cancelAction: true,
     })
@@ -173,7 +177,7 @@ export default App
 ```jsx
 /**
  * title: 动态设置文案
- * desc: 需要在当前页码特殊设置提示文案时
+ * desc: 需要在当前页面特殊设置提示文案时
  */
 import React, { useEffect } from 'react'
 import { Modal, Button } from 'antd'
