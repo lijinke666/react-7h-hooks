@@ -2,9 +2,9 @@ import React from 'react'
 import { renderHook, act } from '@testing-library/react-hooks'
 import { shallow } from 'enzyme'
 import { Prompt } from 'react-router-dom'
-import { usePrompt, createPromptContextProvider } from '../src'
+import { useLeavePrompt, createLeavePromptContextProvider } from '../src'
 import { RouterWrapper } from './router'
-import { _defaultPromptTips } from '../src/hooks/usePrompt'
+import { _defaultPromptTips } from '../src/hooks/useLeavePrompt'
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
@@ -19,7 +19,7 @@ describe('usePrompt', () => {
   beforeAll(() => {
     prompt = renderHook(
       () =>
-        usePrompt({
+        useLeavePrompt({
           title: 'title',
           description: 'description',
           okText: 'ok',
@@ -29,12 +29,12 @@ describe('usePrompt', () => {
         wrapper: RouterWrapper,
       },
     )
-    defaultTipPrompt = renderHook(() => usePrompt(), {
+    defaultTipPrompt = renderHook(() => useLeavePrompt(), {
       wrapper: RouterWrapper,
     })
   })
   it('should be defined', () => {
-    expect(usePrompt).toBeDefined()
+    expect(useLeavePrompt).toBeDefined()
     expect(defaultTipPrompt).toBeDefined()
   })
   it('should get custom prompt tips', () => {
@@ -53,7 +53,7 @@ describe('usePrompt', () => {
   })
 
   it('should return promptContext Provider', () => {
-    const Provider = createPromptContextProvider(null)
+    const Provider = createLeavePromptContextProvider(null)
     const Children = () => <div>1</div>
     const wrapper = shallow(<Provider>{() => <Children />}</Provider>)
     expect(wrapper.find(Prompt)).toHaveLength(1)
@@ -62,13 +62,13 @@ describe('usePrompt', () => {
 
   it('should merge default prompt tips', () => {
     let _promptValue
-    const Provider = createPromptContextProvider({
+    const Provider = createLeavePromptContextProvider({
       okText: 'test',
     })
     const Children = () => <div>1</div>
     shallow(
       <Provider>
-        {promptValue => {
+        {(promptValue) => {
           _promptValue = promptValue
           return <Children />
         }}
@@ -79,13 +79,13 @@ describe('usePrompt', () => {
 
   it('should show prompt when will leave page', () => {
     const {
-      setPromptWhenWillLeave,
+      setPrompt,
       isPromptWhenWillLeave,
       promptValue,
     } = prompt.result.current
 
     act(() => {
-      setPromptWhenWillLeave({ prompt: true })
+      setPrompt({ prompt: true })
     })
 
     expect(isPromptWhenWillLeave).toEqual(true)

@@ -1,23 +1,25 @@
 import { useState, useMemo, useCallback, useContext } from 'react'
 import { Location } from 'history'
 import { useHistory } from 'react-router-dom'
-import PromptContext, {
-  PromptTipsOptions,
-  SetPromptWhenWillLeaveOptions,
-  PromptContextOptions,
-} from '../../context/prompt'
+import LeavePromptContext, {
+  LeavePromptTipsOptions,
+  SetPromptOptions,
+  LeavePromptContextOptions,
+} from '../../context/leavePrompt'
 
-export const _defaultPromptTips: PromptTipsOptions = {
+export const _defaultPromptTips: LeavePromptTipsOptions = {
   title: '确认离开?',
   description: '离开不保留任何数据',
   okText: '确认',
   cancelText: '取消',
 } as const
 
-const usePrompt = (
-  defaultPromptTips: PromptTipsOptions = _defaultPromptTips,
+const useLeavePrompt = (
+  defaultPromptTips: LeavePromptTipsOptions = _defaultPromptTips,
 ) => {
-  const promptContext = useContext<PromptContextOptions>(PromptContext)
+  const promptContext = useContext<LeavePromptContextOptions>(
+    LeavePromptContext,
+  )
   const history = useHistory()
   const [isPromptWhenWillLeave, setIsPromptWhenWillLeave] = useState<boolean>(
     false,
@@ -34,7 +36,7 @@ const usePrompt = (
     setIsConfirmToLeaveFromCancelAction,
   ] = useState<boolean>(false)
   const [isFromCancelAction, setIsFromCancelAction] = useState<boolean>(false)
-  const [promptTips, setPromptTips] = useState<PromptTipsOptions>(
+  const [promptTips, setPromptTips] = useState<LeavePromptTipsOptions>(
     defaultPromptTips,
   )
   const onLocationWillChange = useCallback(
@@ -71,7 +73,7 @@ const usePrompt = (
   }, [isFromCancelAction, history, nextJumpLocation])
 
   const setPromptWhenWillLeaveForConsumer = useCallback(
-    ({ prompt = true, cancelAction }: SetPromptWhenWillLeaveOptions = {}) => {
+    ({ prompt = true, cancelAction }: SetPromptOptions = {}) => {
       const { pathname = '', search = '' } = (history && history.location) || {}
       setIsPromptWhenWillLeave(prompt)
       setNextJumpLocation({
@@ -88,7 +90,7 @@ const usePrompt = (
   )
 
   const setConfirmTipsForConsumer = useCallback(
-    (customConfirmTips: PromptTipsOptions) => {
+    (customConfirmTips: LeavePromptTipsOptions) => {
       setPromptTips({
         ...defaultPromptTips,
         ...customConfirmTips,
@@ -101,7 +103,7 @@ const usePrompt = (
     return {
       isConfirmToLeaveFromCancelAction,
       isPromptWhenWillLeave,
-      setPromptWhenWillLeave: setPromptWhenWillLeaveForConsumer,
+      setPrompt: setPromptWhenWillLeaveForConsumer,
       setConfirmTips: setConfirmTipsForConsumer,
     }
   }, [
@@ -135,4 +137,4 @@ const usePrompt = (
   }
 }
 
-export default usePrompt
+export default useLeavePrompt

@@ -3,7 +3,7 @@ import { useCallback, useState, useEffect } from 'react'
 export default function useCount(defaultCount = 0) {
   const [count, setCount] = useState<number>(defaultCount)
 
-  const onChange = useCallback(index => {
+  const onChange = useCallback((index) => {
     setCount(index)
   }, [])
 

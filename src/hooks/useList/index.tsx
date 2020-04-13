@@ -14,7 +14,7 @@ const useList = (
   const idIndexMapper = useRef<Map<string, number>>(new Map())
 
   const setNextIdIndexMapper = useCallback<(id: string) => void>(
-    id => {
+    (id) => {
       const lastId = Array.from(idIndexMapper.current.keys())[
         idIndexMapper.current.size - 1
       ]
@@ -33,7 +33,7 @@ const useList = (
 
   const onRemove = useCallback(
     (currentListId: string) => {
-      setList(list.filter(listId => listId !== currentListId))
+      setList(list.filter((listId) => listId !== currentListId))
       idIndexMapper.current.delete(currentListId)
     },
     [list],

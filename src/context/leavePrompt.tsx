@@ -1,34 +1,34 @@
 import React from 'react'
 
-export interface SetPromptWhenWillLeaveOptions {
+export interface SetPromptOptions {
   cancelAction?: boolean
   prompt?: boolean
 }
 
-export interface PromptContextOptions {
+export interface LeavePromptContextOptions {
   isPromptWhenWillLeave: boolean
   isConfirmToLeaveFromCancelAction: boolean
-  setPromptWhenWillLeave: (options?: SetPromptWhenWillLeaveOptions) => void
-  setConfirmTips: (options: PromptTipsOptions) => void
+  setPrompt: (options?: SetPromptOptions) => void
+  setConfirmTips: (options: LeavePromptTipsOptions) => void
 }
 
-export interface PromptTipsOptions {
+export interface LeavePromptTipsOptions {
   title?: React.ReactNode | string
   description?: React.ReactNode | string
   okText?: React.ReactNode | string
   cancelText?: React.ReactNode | string
 }
-export interface PromptValueOptions extends PromptTipsOptions {
+export interface LeavePromptValueOptions extends LeavePromptTipsOptions {
   visible: boolean
   onConfirm: () => void
   onCancel: () => void
 }
 
-const PromptContext = React.createContext<PromptContextOptions>({
+const LeavePromptContext = React.createContext<LeavePromptContextOptions>({
   isPromptWhenWillLeave: true,
   isConfirmToLeaveFromCancelAction: false,
-  setPromptWhenWillLeave: () => {},
+  setPrompt: () => {},
   setConfirmTips: () => {},
 })
 
-export default PromptContext
+export default LeavePromptContext

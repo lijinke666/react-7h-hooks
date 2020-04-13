@@ -1,2 +1,2 @@
-export { default as PromptContext } from './prompt'
-export { default as createPromptContextProvider } from './promptContext.provider'
+export { default as LeavePromptContext } from './leavePrompt'
+export { default as createLeavePromptContextProvider } from './leavePromptContext.provider'

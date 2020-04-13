@@ -1,4 +1,8 @@
 module.exports = {
+  parserOptions: {
+    project: './tsconfig.json',
+    createDefaultProgram: true,
+  },
   extends: [
     'airbnb-typescript',
     'prettier',
@@ -16,7 +20,7 @@ module.exports = {
   },
   settings: {
     react: {
-      version: '16.12',
+      version: '16.13',
     },
   },
   parser: '@typescript-eslint/parser',

@@ -16,7 +16,7 @@ export const getJSONUrl = (data: object) => {
 }
 
 export const getLinkUrl = async (src: string) => {
-  const data = await fetch(src).then(res => res.blob())
+  const data = await fetch(src).then((res) => res.blob())
   return URL.createObjectURL(data)
 }
 
@@ -45,7 +45,7 @@ const useDownload = () => {
       link.style.display = 'none'
       link.download = name
       if (type === 'url') {
-        getLinkUrl(data).then(src => {
+        getLinkUrl(data).then((src) => {
           link.href = src
         })
       } else {

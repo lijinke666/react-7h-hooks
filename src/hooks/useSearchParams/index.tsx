@@ -48,7 +48,7 @@ const useSearchParams = <T extends {}>({
   const defaultValues = useMemo<UseSearchParamsSchema>(getDefaultValues, [])
 
   const setDefaultValues = useCallback(() => {
-    Object.keys(defaultValues).forEach(key => {
+    Object.keys(defaultValues).forEach((key) => {
       urlSearchParams.set(key, defaultValues[key] as string)
     })
   }, [defaultValues])
@@ -63,11 +63,11 @@ const useSearchParams = <T extends {}>({
 
   const set = useCallback(
     (values: Partial<T>) => {
-      Object.keys(values).forEach(key => {
+      Object.keys(values).forEach((key) => {
         const value = ((values as unknown) as UseSearchParamsSchema)[key]
         if (value) {
           if (Array.isArray(value)) {
-            value.forEach(v => {
+            value.forEach((v) => {
               urlSearchParams.append(key, v)
             })
           } else {
@@ -108,7 +108,7 @@ const useSearchParams = <T extends {}>({
 
   const deleteMany = useCallback(
     (target: (keyof T)[]) => {
-      target.forEach(key => {
+      target.forEach((key) => {
         urlSearchParams.delete(key as string)
       })
     },
