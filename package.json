@@ -1,6 +1,6 @@
 {
   "name": "react-7h-hooks",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "description": "每天只工作7小时!",
   "repository": "https://github.com/lijinke666/react-7h-hooks.git",
   "bugs": {
@@ -38,7 +38,7 @@
     "build:es": "tsc -m esNext --outDir es --declaration",
     "build:umd": "webpack --config webpack.umd.config.js",
     "clean": "rimraf lib es dist",
-    "release": "standard-version",
+    "release": "standard-version && git push --follow-tags origin master",
     "prepublishOnly": "yarn build",
     "test": "jest",
     "coverage": "yarn test --coverage",
