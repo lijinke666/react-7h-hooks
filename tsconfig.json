@@ -1,20 +1,20 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "module": "commonjs",
     "moduleResolution": "node",
     "jsx": "react",
-    "declaration": true,
+    "declaration": false,
     "pretty": true,
     "sourceMap": false,
     "strict": true,
+    "strictNullChecks": true,
     "esModuleInterop": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noImplicitAny": false,
+    "removeComments": true,
     "noFallthroughCasesInSwitch": true,
-    "outDir": "lib",
     "lib": ["es2018", "dom"]
   },
   "include": ["src"],

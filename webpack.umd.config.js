@@ -43,7 +43,7 @@ module.exports = {
         test: /\.ts[x]?$/,
         use: [
           {
-            loader: 'babel-loader',
+            loader: 'awesome-typescript-loader',
           },
         ],
         exclude: '/node_modules/',

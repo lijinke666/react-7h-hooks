@@ -12,6 +12,9 @@ export default {
   theme: {
     '@primary-color': '#31c27c',
   },
+  base: `/${pkg.name}`,
+  publicPath: `/${pkg.name}/`,
+  exportStatic: {},
   extraBabelPlugins: [
     [
       'babel-plugin-import',

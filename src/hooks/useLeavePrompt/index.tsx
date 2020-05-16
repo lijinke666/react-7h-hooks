@@ -70,7 +70,7 @@ const useLeavePrompt = (
         setIsConfirmToLeaveFromCancelAction(false)
       }, 0)
     }
-  }, [isFromCancelAction, history, nextJumpLocation])
+  }, [isFromCancelAction, history?.push, nextJumpLocation])
 
   const setPromptWhenWillLeaveForConsumer = useCallback(
     ({ prompt = true, cancelAction }: SetPromptOptions = {}) => {
