@@ -21,6 +21,7 @@ jobs:
           npm run bundlesize
           npm test
           npm run ci:coverage
+          npm run build:docs
         env:
           CI: true
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
