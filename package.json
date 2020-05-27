@@ -38,7 +38,7 @@
     "build:es": "tsc -m esNext --outDir es --declaration",
     "build:umd": "webpack --config webpack.umd.config.js",
     "clean": "rimraf lib es dist",
-    "release": "standard-version && git push --follow-tags origin master",
+    "release": "standard-version && git push --follow-tags origin master && npm publish",
     "prepublishOnly": "yarn build",
     "test": "jest",
     "coverage": "yarn test --coverage",
