@@ -16,7 +16,7 @@
  */
 import React from 'react'
 import { Router } from 'react-router-dom'
-import { Table, Button } from 'antd'
+import { Table, Button, Space } from 'antd'
 import { createBrowserHistory } from 'history'
 import { useSearchParams, UseSearchParamsSchemaType } from 'react-7h-hooks'
 
@@ -69,14 +69,14 @@ const App = () => {
   return (
     <>
       <pre>{JSON.stringify(searchParams, undefined, 2)}</pre>
-      <div style={{margin: '10px 0'}}>
-        <Button type="primary" onClick={() => remove(['page'])} style={{marginRight: 10}}>
+      <Space style={{margin: '10px 0'}}>
+        <Button type="primary" onClick={() => remove(['page'])}>
           移除page属性
         </Button>
         <Button type="dashed" onClick={() => reset()}>
           重置page属性
         </Button>
-      </div>
+      </Space>
       <Table
         columns={columns}
         dataSource={dataSource}
@@ -109,7 +109,7 @@ export default Example
 
 import React from 'react'
 import { Router, useLocation } from 'react-router-dom'
-import { Button } from 'antd'
+import { Button, Space, Divider } from 'antd'
 import { createBrowserHistory } from 'history'
 import { useSearchParams, UseSearchParamsSchemaType } from 'react-7h-hooks'
 
@@ -154,40 +154,44 @@ const App = () => {
         添加参数
       </Button>
 
+      <Divider/>
+
       <h3>原始 location search: </h3>
-      <hr />
       <pre>{JSON.stringify(search, undefined, 2)}</pre>
+      <Divider />
 
       <h3>通过 schema 解析之后的 searchParams:</h3>
-      <hr />
       <pre>{JSON.stringify(searchParams, undefined, 2)}</pre>
+      <Divider />
 
       <h2>移除某个属性</h2>
-      <Button
-        type="danger"
-        onClick={() => {
-          remove(['name'])
-        }}
-      >
-        移除 name 属性
-      </Button>
-      <Button
-        type="danger"
-        style={{ margin: '0 10px' }}
-        onClick={() => {
-          remove()
-        }}
-      >
-        移除所有属性
-      </Button>
-      <Button
-        type="danger"
-        onClick={() => {
-          reset()
-        }}
-      >
-        重置
-      </Button>
+
+      <Space>
+        <Button
+          type="danger"
+          onClick={() => {
+            remove(['name'])
+          }}
+        >
+          移除 name 属性
+        </Button>
+        <Button
+          type="danger"
+          onClick={() => {
+            remove()
+          }}
+        >
+          移除所有属性
+        </Button>
+        <Button
+          type="danger"
+          onClick={() => {
+            reset()
+          }}
+        >
+          重置
+        </Button>
+      </Space>
     </div>
   )
 }
@@ -206,6 +210,8 @@ export default Example
 ```js
 const { searchParams, set, remove, reset } = useSearchParams(options)
 ```
+
+<br/>
 
 | 属性 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |

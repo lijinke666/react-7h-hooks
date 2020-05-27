@@ -9,27 +9,21 @@
 
 ## 代码演示
 
-在项目入口 **配置全局 LeavePromptContextProvider**
+在项目入口 **配置全局 LeavePromptProvider**
 
 ```js
 import React from 'react'
 import { Router } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
-import { createLeavePromptContextProvider } from 'react-7h-hooks'
+import { LeavePromptProvider } from 'react-7h-hooks'
+import { Modal } from 'antd'
 
 const App = () => {
   const history = createBrowserHistory()
-  const LeavePromptContextProvider = createLeavePromptContextProvider({
-    // 自定义提示文字配置
-    title: ''
-    description: ''
-    okText: ''
-    cancelText: ''
-  })
 
   return (
     <Router history={history}>
-      <LeavePromptContextProvider>
+      <LeavePromptProvider>
         //  这里的 promptValue 就是 全局 context 里面的 弹框提示
         {promptValue => (
           // 自定义你自己的 模态框 比如 antd 的 Modal
@@ -38,7 +32,7 @@ const App = () => {
             {promptValue.description}
           </Modal>
         )}
-      </LeavePromptContextProvider>
+      </LeavePromptProvider>
     </Router>
   )
 }
@@ -53,7 +47,7 @@ import React, { useEffect } from 'react'
 import { Modal, Button } from 'antd'
 import { Router, useHistory } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
-import { createLeavePromptContextProvider, useLeavePrompt } from 'react-7h-hooks'
+import { LeavePromptProvider, useLeavePrompt } from 'react-7h-hooks'
 
 const Example = () => {
   const history = useHistory()
@@ -70,12 +64,11 @@ const Example = () => {
 }
 
 const App = () => {
-  const LeavePromptContextProvider = createLeavePromptContextProvider()
   const history = createBrowserHistory()
 
   return (
     <Router history={history}>
-      <LeavePromptContextProvider>
+      <LeavePromptProvider>
         {promptValue => (
           <>
             <Example />
@@ -84,13 +77,14 @@ const App = () => {
             </Modal>
           </>
         )}
-      </LeavePromptContextProvider>
+      </LeavePromptProvider>
     </Router>
   )
 }
 
 export default App
 ```
+
 
 ```jsx
 /**
@@ -101,7 +95,7 @@ import React, { useEffect, useState, useCallback } from 'react'
 import { Modal, Button } from 'antd'
 import { Router, useHistory } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
-import { createLeavePromptContextProvider, useLeavePrompt } from 'react-7h-hooks'
+import { LeavePromptProvider, useLeavePrompt } from 'react-7h-hooks'
 
 const Example = () => {
   const [edit, setEdit] = useState(false)
@@ -152,12 +146,11 @@ const Example = () => {
 }
 
 const App = () => {
-  const LeavePromptContextProvider = createLeavePromptContextProvider()
   const history = createBrowserHistory()
 
   return (
     <Router history={history}>
-      <LeavePromptContextProvider>
+      <LeavePromptProvider>
         {promptValue => (
           <>
             <Example />
@@ -166,7 +159,7 @@ const App = () => {
             </Modal>
           </>
         )}
-      </LeavePromptContextProvider>
+      </LeavePromptProvider>
     </Router>
   )
 }
@@ -180,10 +173,10 @@ export default App
  * desc: 需要在当前页面特殊设置提示文案时
  */
 import React, { useEffect } from 'react'
-import { Modal, Button } from 'antd'
+import { Modal, Button, Divider } from 'antd'
 import { Router, useHistory } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
-import { createLeavePromptContextProvider, useLeavePrompt } from 'react-7h-hooks'
+import { LeavePromptProvider, useLeavePrompt } from 'react-7h-hooks'
 
 const Example = () => {
   const history = useHistory()
@@ -208,22 +201,27 @@ const Example = () => {
 }
 
 const App = () => {
-  const LeavePromptContextProvider = createLeavePromptContextProvider()
   const history = createBrowserHistory()
 
   return (
     <Router history={history}>
-      <LeavePromptContextProvider>
+      <LeavePromptProvider promptTips={{
+        title: 'title',
+        description: 'description',
+        okText: 'okText',
+        cancelText: 'cancelText',
+      }}>
         {promptValue => (
           <>
-            {JSON.stringify(promptValue)}
+            <pre>{JSON.stringify(promptValue, undefined, 2)}</pre>
+            <Divider/>
             <Example />
             <Modal {...promptValue} onOk={promptValue.onConfirm}>
               {promptValue.description}
             </Modal>
           </>
         )}
-      </LeavePromptContextProvider>
+      </LeavePromptProvider>
     </Router>
   )
 }
@@ -234,7 +232,7 @@ export default App
 ## API
 
 ```js
-import { createLeavePromptContextProvider } from 'react-7h-hooks'
+import { LeavePromptProvider } from 'react-7h-hooks'
 const { setPrompt, setConfirmTips, isConfirmToLeaveFromCancelAction } = useLeavePrompt(options)
 ```
 
@@ -243,7 +241,17 @@ const { setPrompt, setConfirmTips, isConfirmToLeaveFromCancelAction } = useLeave
 | setPrompt | 设置当前页面是否需要提示 | `(options: SetPromptOptions) => void` | `-` |
 | setConfirmTips | 设置提示文本 | `(options: LeavePromptTipsOptions) => void` | `DefaultConfirmTips` |
 | isConfirmToLeaveFromCancelAction | 是否点击了确认 | `boolean` | `false` |
-| createLeavePromptContextProvider | 创建一个 prompt 的 context Provider | `(options: LeavePromptTipsOptions) => Context` | `-` |
+
+## LeavePromptProvider
+
+```js
+import { LeavePromptProvider } from 'react-7h-hooks'
+```
+
+| 属性 | 说明 | 类型 | 默认值 |
+| --- | --- | --- | --- |
+| promptTips | prompt 的 context Provider | `LeavePromptTipsOptions` | `DefaultConfirmTips` |
+| children | react children | `(promptValue?: LeavePromptValueOptions) => React.ReactNode` | `-` |
 
 ## SetPromptOptions
 

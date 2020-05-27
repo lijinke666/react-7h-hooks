@@ -6,13 +6,11 @@ import LeavePromptContext, {
 } from './leavePrompt'
 import useLeavePrompt from '../hooks/useLeavePrompt'
 
-interface Props {
+const LeavePromptProvider: React.FC<{
+  promptTips?: LeavePromptTipsOptions
   children: (promptValue?: LeavePromptValueOptions) => React.ReactNode
-}
-
-const createLeavePromptContextProvider = (
-  promptTips?: LeavePromptTipsOptions,
-) => (props: Props) => {
+}> = (props) => {
+  const { promptTips, children } = props
   const {
     onLocationWillChange,
     promptContextProviderValue,
@@ -21,9 +19,9 @@ const createLeavePromptContextProvider = (
   return (
     <LeavePromptContext.Provider value={promptContextProviderValue}>
       <Prompt message={onLocationWillChange} />
-      {props.children(promptValue)}
+      {children(promptValue)}
     </LeavePromptContext.Provider>
   )
 }
 
-export default createLeavePromptContextProvider
+export default LeavePromptProvider

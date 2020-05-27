@@ -15,21 +15,19 @@
  * desc: 动态的增加删除
  */
 import React from 'react'
-import { Button, Badge } from 'antd'
+import { Button, Badge, Space } from 'antd'
 import { useCount } from 'react-7h-hooks'
 
 const Example = () => {
   const { count, onAdd, onSubtract, onReset, setCount } = useCount()
   return (
-    <>
-       <Badge count={count} showZero/>
-       <div style={{margin: '10px 0'}}>
-        <Button onClick={onAdd}>+1</Button>
-        <Button onClick={onSubtract}>-1</Button>
-        <Button onClick={onReset}>重置</Button>
-        <Button onClick={() => setCount(3)}>设置 current 为 3</Button>
-       </div>
-    </>
+    <Space>
+    <Badge count={count} showZero/>
+    <Button onClick={onAdd}>+1</Button>
+    <Button onClick={onSubtract}>-1</Button>
+    <Button onClick={onReset}>重置</Button>
+    <Button onClick={() => setCount(3)}>设置 current 为 3</Button>
+    </Space>
   )
 }
 
@@ -42,21 +40,19 @@ export default Example
  * desc: 设置默认计数为3
  */
 import React from 'react'
-import { Button, Badge } from 'antd'
+import { Button, Badge, Space } from 'antd'
 import { useCount } from 'react-7h-hooks'
 
 const Example = () => {
   const { count, onAdd, onSubtract, onReset, setCount } = useCount(3)
   return (
-    <>
-       <Badge count={count} showZero/>
-       <div style={{margin: '10px 0'}}>
-        <Button onClick={onAdd}>+1</Button>
-        <Button onClick={onSubtract}>-1</Button>
-        <Button onClick={onReset}>重置</Button>
-        <Button onClick={() => setCount(3)}>设置 current 为 3</Button>
-       </div>
-    </>
+    <Space>
+      <Badge count={count} showZero/>
+      <Button onClick={onAdd}>+1</Button>
+      <Button onClick={onSubtract}>-1</Button>
+      <Button onClick={onReset}>重置</Button>
+      <Button onClick={() => setCount(3)}>设置 current 为 3</Button>
+    </Space>
   )
 }
 
@@ -92,6 +88,8 @@ export default Example
 ```js
 const { count, onAdd, onSubtract, onReset, setCount } = useCount(defaultCount)
 ```
+
+<br/>
 
 | 属性         | 说明   | 类型     | 默认值 |
 | ------------ | ------ | -------- | ------ |

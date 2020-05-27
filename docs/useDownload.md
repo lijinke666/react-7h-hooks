@@ -108,6 +108,8 @@ const createDownloadInstance = useDownload(options)
 createDownloadInstance.download()
 ```
 
+<br/>
+
 | 属性         | 说明     | 类型                      | 默认值 |
 | ------------ | -------- | ------------------------- | ------ |
 | options.name | 文件名   | `string`                  | `-`    |

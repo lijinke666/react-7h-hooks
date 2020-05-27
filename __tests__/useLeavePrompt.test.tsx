@@ -2,7 +2,7 @@ import React from 'react'
 import { renderHook, act } from '@testing-library/react-hooks'
 import { shallow } from 'enzyme'
 import { Prompt } from 'react-router-dom'
-import { useLeavePrompt, createLeavePromptContextProvider } from '../src'
+import { useLeavePrompt, LeavePromptProvider } from '../src'
 import { RouterWrapper } from './router'
 import { _defaultPromptTips } from '../src/hooks/useLeavePrompt'
 
@@ -53,26 +53,28 @@ describe('usePrompt', () => {
   })
 
   it('should return promptContext Provider', () => {
-    const Provider = createLeavePromptContextProvider(null)
     const Children = () => <div>1</div>
-    const wrapper = shallow(<Provider>{() => <Children />}</Provider>)
+    const wrapper = shallow(
+      <LeavePromptProvider>{() => <Children />}</LeavePromptProvider>,
+    )
     expect(wrapper.find(Prompt)).toHaveLength(1)
     expect(wrapper.find(Children)).toHaveLength(1)
   })
 
   it('should merge default prompt tips', () => {
     let _promptValue
-    const Provider = createLeavePromptContextProvider({
-      okText: 'test',
-    })
     const Children = () => <div>1</div>
     shallow(
-      <Provider>
+      <LeavePromptProvider
+        promptTips={{
+          okText: 'test',
+        }}
+      >
         {(promptValue) => {
           _promptValue = promptValue
           return <Children />
         }}
-      </Provider>,
+      </LeavePromptProvider>,
     )
     expect(_promptValue.okText).toEqual('test')
   })

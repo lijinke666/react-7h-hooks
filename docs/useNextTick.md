@@ -57,6 +57,8 @@ export default Example
 const reTrigger = useNextTick(handler)
 ```
 
+<br/>
+
 | 属性      | 说明              | 类型       | 默认值 |
 | --------- | ----------------- | ---------- | ------ |
 | handler   | 自定义处理函数    | `Function` | `-`    |

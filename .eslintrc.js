@@ -79,5 +79,6 @@ module.exports = {
     'import/extensions': 0,
     'import/prefer-default-export': 0,
     'no-param-reassign': 0,
+    'import/no-extraneous-dependencies': 0,
   },
 }

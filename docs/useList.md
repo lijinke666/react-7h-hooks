@@ -15,7 +15,7 @@
  * desc: 动态的增加删除
  */
 import React from 'react'
-import { Button, Form, Input, Icon } from 'antd'
+import { Button, Form, Input, Icon, Space } from 'antd'
 import { useList } from 'react-7h-hooks'
 
 const Example = () => {
@@ -38,19 +38,21 @@ const Example = () => {
           </Form.Item>
         )
       })}
-      <Button type="dashed" onClick={onAdd}>
-        <Icon type="plus" /> 新增
-      </Button>
-      {list.length >= 1 && (
-        <>
-          <Button type="danger" onClick={onReset} style={{margin: '0 10px'}}>
-            重置
-          </Button>
-          <Button type="dashed" onClick={onClear}>
-            清空
-          </Button>
-        </>
-      )}
+      <Space>
+        <Button type="dashed" onClick={onAdd}>
+          <Icon type="plus" /> 新增
+        </Button>
+        {list.length >= 1 && (
+          <>
+            <Button type="danger" onClick={onReset}>
+              重置
+            </Button>
+            <Button type="dashed" onClick={onClear}>
+              清空
+            </Button>
+          </>
+        )}
+      </Space>
     </Form>
   )
 }
@@ -64,7 +66,7 @@ export default Example
  * desc: 默认显示2个列表项, 会重置输入框的值
  */
 import React from 'react'
-import { Button, Form, Input, Icon } from 'antd'
+import { Button, Form, Input, Icon, Space } from 'antd'
 import { useList } from 'react-7h-hooks'
 
 const Example = () => {
@@ -88,19 +90,21 @@ const Example = () => {
           </Form.Item>
         )
       })}
-      <Button type="dashed" onClick={onAdd}>
-        <Icon type="plus" /> 新增
-      </Button>
-      {list.length >= 1 && (
-        <>
-          <Button type="danger" onClick={onReset} style={{margin: '0 10px'}}>
-            重置
-          </Button>
-          <Button type="dashed" onClick={onClear}>
-            清空
-          </Button>
-        </>
-      )}
+      <Space>
+        <Button type="dashed" onClick={onAdd}>
+          <Icon type="plus" /> 新增
+        </Button>
+        {list.length >= 1 && (
+          <>
+            <Button type="danger" onClick={onReset}>
+              重置
+            </Button>
+            <Button type="dashed" onClick={onClear}>
+              清空
+            </Button>
+          </>
+        )}
+      </Space>
     </Form>
   )
 }
@@ -114,7 +118,7 @@ export default Example
  * desc: 自定义组合标题-记住index (eg. 当前表单1，表单2, 表单3, 将表单2删除后, 新增后, 下一个标题为 `表单4`)
  */
 import React from 'react'
-import { Button, Form, Input, Icon } from 'antd'
+import { Button, Form, Input, Icon, Space } from 'antd'
 import { useList } from 'react-7h-hooks'
 
 const Example = () => {
@@ -141,19 +145,21 @@ const Example = () => {
           </Form.Item>
         )
       })}
-      <Button type="dashed" onClick={onAdd}>
-        <Icon type="plus" /> 新增
-      </Button>
-      {list.length >= 1 && (
-        <>
-          <Button type="danger" onClick={onReset} style={{margin: '0 10px'}}>
-            重置
-          </Button>
-          <Button type="dashed" onClick={onClear}>
-            清空
-          </Button>
-        </>
-      )}
+      <Space>
+        <Button type="dashed" onClick={onAdd}>
+          <Icon type="plus" /> 新增
+        </Button>
+        {list.length >= 1 && (
+          <>
+            <Button type="danger" onClick={onReset}>
+              重置
+            </Button>
+            <Button type="dashed" onClick={onClear}>
+              清空
+            </Button>
+          </>
+        )}
+      </Space>
     </Form>
   )
 }
@@ -167,7 +173,7 @@ export default Example
  * desc: 自定义组合标题-不记住index, 以实际表单项为序号（默认）
  */
 import React from 'react'
-import { Button, Form, Input, Icon } from 'antd'
+import { Button, Form, Input, Icon, Space } from 'antd'
 import { useList } from 'react-7h-hooks'
 
 const Example = () => {
@@ -193,19 +199,21 @@ const Example = () => {
           </Form.Item>
         )
       })}
-      <Button type="dashed" onClick={onAdd}>
-        <Icon type="plus" /> 新增
-      </Button>
-      {list.length >= 1 && (
-        <>
-          <Button type="danger" onClick={onReset} style={{margin: '0 10px'}}>
-            重置
-          </Button>
-          <Button type="dashed" onClick={onClear}>
-            清空
-          </Button>
-        </>
-      )}
+      <Space>
+        <Button type="dashed" onClick={onAdd}>
+          <Icon type="plus" /> 新增
+        </Button>
+        {list.length >= 1 && (
+          <>
+            <Button type="danger" onClick={onReset}>
+              重置
+            </Button>
+            <Button type="dashed" onClick={onClear}>
+              清空
+            </Button>
+          </>
+        )}
+      </Space>
     </Form>
   )
 }
@@ -218,6 +226,8 @@ export default Example
 ```js
 const { list, onAdd, onRemove, onReset, onClear, onGetTitle, idIndexMapper } = useList(options)
 ```
+
+<br />
 
 | 属性                  | 说明                                       | 类型                                                                                        | 默认值  |
 | --------------------- | ------------------------------------------ | ------------------------------------------------------------------------------------------- | ------- |
