@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.8.4](https://github.com/lijinke666/react-7h-hooks/compare/v0.8.2...v0.8.4) (2020-05-27)
+
+
+### Features
+
+* 升级依赖包版本, 去除 react-router 依赖 ([7a668bc](https://github.com/lijinke666/react-7h-hooks/commit/7a668bccd3a183abb7929410677a5d51abf475b6))
+
+
+### Bug Fixes
+
+* **use-leave-prompt:** 优化 provider 的使用方式, 现在直接引入, 不需要create了 ([5759cd3](https://github.com/lijinke666/react-7h-hooks/commit/5759cd34bb1791728e3953e9d9540b53320eb1d1))
+* gh pages ([800321c](https://github.com/lijinke666/react-7h-hooks/commit/800321c18d88d8fb3b772705b43be9d0ce703913))
+
 ### [0.8.3](https://github.com/lijinke666/react-7h-hooks/compare/v0.8.2...v0.8.3) (2020-05-16)
 
 
