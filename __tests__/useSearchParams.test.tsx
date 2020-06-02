@@ -1,6 +1,7 @@
-import { renderHook, act } from '@testing-library/react-hooks'
+import { renderHook, act, RenderHookResult } from '@testing-library/react-hooks'
 import { useSearchParams, UseSearchParamsSchemaType } from '../src'
 import { RouterWrapper } from './router'
+import { UseSearchParamsOptions } from '../src/hooks/useSearchParams/index.interface'
 
 describe('useSearchParams', () => {
   const schema = {
@@ -17,7 +18,10 @@ describe('useSearchParams', () => {
     },
     friends: UseSearchParamsSchemaType.ARRAY,
   }
-  let hook
+  let hook: RenderHookResult<
+    UseSearchParamsOptions & { search: string },
+    ReturnType<typeof useSearchParams>
+  >
   beforeAll(() => {
     hook = renderHook(
       () =>
@@ -73,9 +77,9 @@ describe('useSearchParams', () => {
   it.skip('should remove target field when call remove', async () => {
     const { searchParams, remove } = hook.result.current
     act(() => {
-      remove(['age'])
+      remove(['age'] as any)
     })
-    await hook.rerender()
+    hook.rerender()
     expect(searchParams).toStrictEqual({ test: 'defaultValue' })
   })
   it.skip('should remove all field when call remove', async () => {

@@ -1,8 +1,8 @@
 import React from 'react'
 import { Router } from 'react-router-dom'
-import { createMemoryHistory } from 'history'
+import { createBrowserHistory } from 'history'
 
-const history = createMemoryHistory()
+const history = createBrowserHistory()
 
 export const RouterWrapper = ({ children }: { children?: React.ReactNode }) => {
   return <Router history={history}>{children}</Router>

@@ -1,9 +1,13 @@
-import { renderHook } from '@testing-library/react-hooks'
+import { renderHook, RenderHookResult } from '@testing-library/react-hooks'
 import { useDownload } from '../src'
 import { createBlobUrl, getLinkUrl } from '../src/hooks/useDownload'
+import { UseDownloadOptions } from '../src/hooks/useDownload/index.interface'
 
 describe('useDownload', () => {
-  let download
+  let download: RenderHookResult<
+    UseDownloadOptions,
+    ReturnType<typeof useDownload>
+  >
   beforeAll(() => {
     download = renderHook(() => useDownload())
   })
@@ -22,7 +26,7 @@ describe('useDownload', () => {
   })
   it('should throw error if not have data', () => {
     const createInstance = download.result.current
-    expect(() => createInstance({ name: '1' })).toThrowError(
+    expect(() => createInstance({ name: '1', data: '' })).toThrowError(
       new Error('[createDownloadInstance]: invalid data!'),
     )
   })

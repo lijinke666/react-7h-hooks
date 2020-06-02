@@ -8,7 +8,7 @@ import useLeavePrompt from '../hooks/useLeavePrompt'
 
 const LeavePromptProvider: React.FC<{
   promptTips?: LeavePromptTipsOptions
-  children: (promptValue?: LeavePromptValueOptions) => React.ReactNode
+  children: (promptValue: LeavePromptValueOptions) => React.ReactNode
 }> = (props) => {
   const { promptTips, children } = props
   const {

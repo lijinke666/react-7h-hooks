@@ -1,9 +1,16 @@
-import { renderHook, act } from '@testing-library/react-hooks'
+import { renderHook, act, RenderHookResult } from '@testing-library/react-hooks'
 import { useNextTick } from '../src'
+import { UseNextTickOptions } from '../src/hooks/useNextTick/index.interface'
 
 describe('useNextTick', () => {
-  let autoTrigger
-  let trigger
+  let autoTrigger: RenderHookResult<
+    UseNextTickOptions,
+    ReturnType<typeof useNextTick>
+  >
+  let trigger: RenderHookResult<
+    UseNextTickOptions,
+    ReturnType<typeof useNextTick>
+  >
   const autoTriggerFn = jest.fn()
   beforeAll(() => {
     autoTrigger = renderHook(() => useNextTick(() => autoTriggerFn))

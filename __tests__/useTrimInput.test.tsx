@@ -1,12 +1,12 @@
 import React from 'react'
-import { renderHook, act } from '@testing-library/react-hooks'
+import { renderHook, act, RenderHookResult } from '@testing-library/react-hooks'
 import { Input } from 'antd'
 import { mount } from 'enzyme'
 import { useTrimInput } from '../src'
 
 describe('useTrimInput', () => {
-  let trimInput
-  let fullTrimInput
+  let trimInput: RenderHookResult<boolean, ReturnType<typeof useTrimInput>>
+  let fullTrimInput: RenderHookResult<boolean, ReturnType<typeof useTrimInput>>
   beforeAll(() => {
     trimInput = renderHook(() => useTrimInput())
     fullTrimInput = renderHook(() => useTrimInput(true))

@@ -3,7 +3,7 @@ import { useCallback, useMemo, useEffect, useState } from 'react'
 import { useHistory, useLocation } from 'react-router-dom'
 import {
   UseSearchParamsOptions,
-  UseSearchParamsReturn,
+  // UseSearchParamsReturn,
   UseSearchParamsSchemaDetail,
   UseSearchParamsSchema,
   UseSearchParamsSchemaType,
@@ -12,10 +12,10 @@ import {
 const useSearchParams = <T extends {}>({
   schema,
   pathname: _pathname,
-}: UseSearchParamsOptions): UseSearchParamsReturn<T> => {
+}: UseSearchParamsOptions) => {
   const history = useHistory()
   const location = useLocation()
-  const [paramKeys, setParamKeys] = useState<(keyof T)[]>([])
+  const [paramKeys, setParamKeys] = useState<Array<keyof T>>([])
   const urlSearchParams = useMemo(
     () => new URLSearchParams(location.search),
     [],
@@ -115,8 +115,8 @@ const useSearchParams = <T extends {}>({
     [urlSearchParams],
   )
 
-  const remove = useCallback(
-    (keys?: (keyof T)[]) => {
+  const remove = useCallback<(keys?: Array<keyof T>) => void>(
+    (keys?) => {
       if (!keys || !keys.length) {
         deleteMany(paramKeys)
       } else {
@@ -147,7 +147,7 @@ const useSearchParams = <T extends {}>({
   }, [location.search])
 
   useEffect(() => {
-    setParamKeys(Object.keys(searchParams) as (keyof T)[])
+    setParamKeys(Object.keys(searchParams) as Array<keyof T>)
   }, [searchParams])
 
   useEffect(() => {

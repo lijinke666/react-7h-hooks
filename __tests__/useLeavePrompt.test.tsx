@@ -1,12 +1,14 @@
 import React from 'react'
-import { renderHook, act } from '@testing-library/react-hooks'
+import { renderHook, act, RenderHookResult } from '@testing-library/react-hooks'
 import { shallow } from 'enzyme'
 import { Prompt } from 'react-router-dom'
 import { useLeavePrompt, LeavePromptProvider } from '../src'
 import { RouterWrapper } from './router'
 import { _defaultPromptTips } from '../src/hooks/useLeavePrompt'
+import { LeavePromptTipsOptions } from '../src/context/leavePrompt'
 
 jest.mock('react-router-dom', () => ({
+  // @ts-ignore
   ...jest.requireActual('react-router-dom'),
   useHistory: () => ({
     push: jest.fn(),
@@ -14,8 +16,14 @@ jest.mock('react-router-dom', () => ({
 }))
 
 describe('usePrompt', () => {
-  let prompt
-  let defaultTipPrompt
+  let prompt: RenderHookResult<
+    LeavePromptTipsOptions,
+    ReturnType<typeof useLeavePrompt>
+  >
+  let defaultTipPrompt: RenderHookResult<
+    LeavePromptTipsOptions,
+    ReturnType<typeof useLeavePrompt>
+  >
   beforeAll(() => {
     prompt = renderHook(
       () =>
@@ -62,7 +70,7 @@ describe('usePrompt', () => {
   })
 
   it('should merge default prompt tips', () => {
-    let _promptValue
+    let _promptValue: LeavePromptTipsOptions
     const Children = () => <div>1</div>
     shallow(
       <LeavePromptProvider
@@ -76,6 +84,7 @@ describe('usePrompt', () => {
         }}
       </LeavePromptProvider>,
     )
+    // @ts-expect-error
     expect(_promptValue.okText).toEqual('test')
   })
 

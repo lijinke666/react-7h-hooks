@@ -1,22 +1,23 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "moduleResolution": "node",
+    "module": "esnext",
     "jsx": "react",
     "declaration": false,
     "pretty": true,
     "sourceMap": false,
     "strict": true,
+    "skipLibCheck": true,
     "strictNullChecks": true,
     "esModuleInterop": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "noImplicitAny": false,
+    "noImplicitAny": true,
     "removeComments": true,
     "noFallthroughCasesInSwitch": true,
     "lib": ["es2018", "dom"]
   },
-  "include": ["src"],
-  "exclude": ["node_modules", "lib", "**/__tests__/**/*", ".history"]
+  "include": ["src","__tests__"],
 }

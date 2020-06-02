@@ -27,7 +27,7 @@ describe('useList', () => {
 
   it('should get custom format title when call onGetTitle', () => {
     const { result } = renderHook(() =>
-      useList({ count: 2, title: id => `测试-${id}` }),
+      useList({ count: 2, title: (id) => `测试-${id}` }),
     )
     const ids = result.current.list
 
