@@ -18,5 +18,5 @@
     "noFallthroughCasesInSwitch": true,
     "lib": ["es2018", "dom"]
   },
-  "include": ["src","__tests__"],
+  "include": ["src", "__tests__"]
 }

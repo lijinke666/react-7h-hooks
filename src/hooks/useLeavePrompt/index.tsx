@@ -1,13 +1,13 @@
-import { useState, useMemo, useCallback, useContext } from 'react'
 import { Location } from 'history'
+import { useCallback, useContext, useMemo, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import LeavePromptContext, {
+  LeavePromptContextOptions,
   LeavePromptTipsOptions,
   SetPromptOptions,
-  LeavePromptContextOptions,
 } from '../../context/leavePrompt'
 
-export const _defaultPromptTips: LeavePromptTipsOptions = {
+export const DEFAULT_PROMPT_TIPS: LeavePromptTipsOptions = {
   title: '确认离开?',
   description: '离开不保留任何数据',
   okText: '确认',
@@ -15,7 +15,7 @@ export const _defaultPromptTips: LeavePromptTipsOptions = {
 } as const
 
 const useLeavePrompt = (
-  defaultPromptTips: LeavePromptTipsOptions = _defaultPromptTips,
+  defaultPromptTips: LeavePromptTipsOptions = DEFAULT_PROMPT_TIPS,
 ) => {
   const promptContext = useContext<LeavePromptContextOptions>(
     LeavePromptContext,
@@ -62,7 +62,7 @@ const useLeavePrompt = (
     setIsPromptWhenWillLeave(false)
     setConfirmModalVisible(false)
     setTimeout(() => {
-      history?.push(nextJumpLocation)
+      history.push(nextJumpLocation)
     }, 0)
     if (isFromCancelAction) {
       setIsConfirmToLeaveFromCancelAction(true)
@@ -70,7 +70,7 @@ const useLeavePrompt = (
         setIsConfirmToLeaveFromCancelAction(false)
       }, 0)
     }
-  }, [isFromCancelAction, history?.push, nextJumpLocation])
+  }, [isFromCancelAction, history, nextJumpLocation])
 
   const setPromptWhenWillLeaveForConsumer = useCallback(
     ({ prompt = true, cancelAction }: SetPromptOptions = {}) => {
