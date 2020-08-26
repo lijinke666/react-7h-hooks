@@ -8,7 +8,7 @@ export default {
   theme: {
     '@primary-color': '#31c27c',
   },
-  exportStatic: {},
+  // exportStatic: {},
   extraBabelPlugins: [
     [
       'babel-plugin-import',
